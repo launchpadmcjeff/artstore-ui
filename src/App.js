@@ -5,6 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
+function ProductHook(props) {
+  let url = 'http://localhost:8080/artstore/img/' + props.id + '.jpg';
+  return (
+    <div className="Product-hook">
+    <img src={url} alt="Van Gogh Self Portrait" />
+
+    <button onClick={getOrders99}>
+      <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
+    </button>
+  </div>
+  )
+}
+
 function App() {
   return (
     <div className="App">
@@ -23,8 +36,43 @@ function App() {
           <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
         </button>
       </div>
+      <div className="Product-hook">
+        <img src="http://localhost:8080/artstore/img/2.jpg" alt="Van Gogh Self Portrait" />
 
+        <button onClick={getOrders99}>
+          <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
+        </button>
+      </div>
+      <div className="Product-hook">
+        <img src="http://localhost:8080/artstore/img/3.jpg" alt="Van Gogh Self Portrait" />
 
+        <button onClick={getOrders99}>
+          <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
+        </button>
+      </div>
+      <div className="Product-hook">
+        <img src="http://localhost:8080/artstore/img/4.jpg" alt="Van Gogh Self Portrait" />
+
+        <button onClick={getOrders99}>
+          <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
+        </button>
+      </div>
+      <div className="Product-hook">
+        <img src="http://localhost:8080/artstore/img/5.jpg" alt="Van Gogh Self Portrait" />
+
+        <button onClick={getOrders99}>
+          <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
+        </button>
+      </div>
+      <div className="Product-hook">
+        <img src="http://localhost:8080/artstore/img/6.jpg" alt="Van Gogh Self Portrait" />
+
+        <button onClick={getOrders99}>
+          <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
+        </button>
+      </div>
+
+<ProductHook id="3"/>
 
       <button onClick={getProducts}>
         getProducts
