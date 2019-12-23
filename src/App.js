@@ -1,40 +1,43 @@
 import React from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 className="foo">The Artstore</h1>
-        <FontAwesomeIcon icon={faCoffee} />
-        
-        <img src="http://localhost:8080/artstore/img/1.jpg" alt="Van Gogh Self Portrait"/>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={getProducts}>
-          getProducts
-</button>
-        <button onClick={getOrders}>
-          getOrders
-</button>
-        <button onClick={getOrders99}>
-          getOrders99
-</button>
-        <button onClick={postOrders}>
-          postOrders
-</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="Shopping-status">
+          <FontAwesomeIcon icon={faShoppingCart} className="p-1" color="#fff" />
+
+        </div>
+        <h1>The Artstore</h1>
+        {/* <FontAwesomeIcon icon={faCoffee} className="p-1" /> */}
       </header>
+      <div className="Product-hook">
+        <img src="http://localhost:8080/artstore/img/1.jpg" alt="Van Gogh Self Portrait" />
+
+        <button onClick={getOrders99}>
+          <FontAwesomeIcon icon={faCartPlus} size="4x" color="#f3cd14" />
+        </button>
+      </div>
+
+
+
+      <button onClick={getProducts}>
+        getProducts
+</button>
+      <button onClick={getOrders}>
+        getOrders
+</button>
+      <button onClick={getOrders99}>
+        getOrders99
+</button>
+      <button onClick={postOrders}>
+        postOrders
+</button>
 
     </div>
   );
