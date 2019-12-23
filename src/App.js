@@ -1,17 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="foo">The Artstore</h1>
+        <FontAwesomeIcon icon={faCoffee} />
+        
+        <img src="http://localhost:8080/artstore/img/1.jpg" alt="Van Gogh Self Portrait"/>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <button onClick={getProducts}>
           getProducts
+</button>
+        <button onClick={getOrders}>
+          getOrders
+</button>
+        <button onClick={getOrders99}>
+          getOrders99
 </button>
         <button onClick={postOrders}>
           postOrders
@@ -32,7 +42,21 @@ function App() {
 
 async function getProducts(e) {
   e.preventDefault();
-  const response = await fetch('http://localhost:8080/artstore/products', { headers: { 'Content-Type': 'application/json' } });
+  const response = await fetch('http://localhost:8080/artstore/rest/products', { headers: { 'Content-Type': 'application/json' } });
+  const myJson = await response.json();
+  console.log(JSON.stringify(myJson));
+
+}
+async function getOrders99(e) {
+  e.preventDefault();
+  const response = await fetch('http://localhost:8080/artstore/rest/orders/99', { headers: { 'Content-Type': 'application/json' } });
+  const myJson = await response.json();
+  console.log(JSON.stringify(myJson));
+
+}
+async function getOrders(e) {
+  e.preventDefault();
+  const response = await fetch('http://localhost:8080/artstore/rest/orders', { headers: { 'Content-Type': 'application/json' } });
   const myJson = await response.json();
   console.log(JSON.stringify(myJson));
 
@@ -42,7 +66,7 @@ async function getProducts(e) {
 async function postOrders(e) {
   e.preventDefault();
   try {
-    const data = await postData('http://localhost:8080/artstore/orders', {});
+    const data = await postData('http://localhost:8080/artstore/rest/orders', {});
     console.log(JSON.stringify(data)); // JSON-string from `response.json()` call
   } catch (error) {
     console.error(error);
