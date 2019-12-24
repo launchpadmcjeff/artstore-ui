@@ -4,6 +4,15 @@
 
 }
 
+footer {
+  padding: 2rem;
+  background-color: black;
+}
+
+.Products-list {
+
+}
+
 .Product-hook {
   padding: 2rem;
   /* overflow: none; */
@@ -14,6 +23,7 @@
   /* display: block; */
   width: 100%;
 }
+
 .Product-hook button {
   display: block;
   padding: 1rem 2rem;
@@ -23,7 +33,7 @@
   border-radius: 1rem;
 }
 .App {
-
+  
 }
 
 .Shopping-status {
@@ -34,14 +44,13 @@
 .p-1 {
   color: white;
 }
-.App-header {
-  
+
+header {
   padding: 2rem;
   background-color: black;
-  
-  
 }
-.App-header h1 {
+
+header h1 {
   text-align: center;
   padding: 2rem;
   color: #f3cd14;
