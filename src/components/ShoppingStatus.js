@@ -7,18 +7,19 @@ class ShoppingStatus extends Component {
     render() {
         return (
             <div className="Shopping-status">
-            <FontAwesomeIcon icon={faShoppingCart} className="p-1" color="#fff" />
-
-          </div>
+                <span>{this.props.itemCount}</span>
+                <FontAwesomeIcon icon={faShoppingCart} className="p-1" color="#fff" />
+            </div>
         )
     }
 }
 
 const mapStateToProps = state => {
     console.log('mapStateToProps: ' + JSON.stringify(state));
-    return {};
-  };
+    console.log(state);
+    return { itemCount: state.cart.length };
+};
 
 export default connect(
     mapStateToProps
-  )(ShoppingStatus);
+)(ShoppingStatus);
