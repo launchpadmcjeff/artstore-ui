@@ -2,32 +2,10 @@ import React from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
-function ProductHook(props) {
-  return (
-    <div className="Product-hook">
-      <img src={'http://localhost:8080/artstore/img/' + props.id + '.jpg'} alt="Van Gogh Self Portrait" />
+import ProductsList from './components/ProductsList'
 
-      <button onClick={getOrders99}>
-        <FontAwesomeIcon icon={faCartPlus} size="2x" color="#f3cd14" />
-      </button>
-    </div>
-  )
-}
 
-function ProductsList(props) {
-  const numbers = [1, 2, 3, 4, 5, 6];
-  const listItems = numbers.map((number) =>
-    <ProductHook key={number.toString()} id={number.toString()} />
-  );
-
-  return (
-    <div className="Products-list">
-      {listItems}
-    </div>
-  );
-}
 
 function App() {
 
