@@ -1,10 +1,9 @@
 import { ADD_TO_CART } from "../actionTypes";
 const initialState = {
-  allIds: [],
-  byIds: {}
+  cart: []
 };
 const foo = (state = initialState, action) => {
-    console.log('foo reducer');
+    console.log('foo reducer: ' + JSON.stringify(state));
     switch (action.type) {
       case ADD_TO_CART: {
         return state;
