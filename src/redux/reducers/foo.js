@@ -1,11 +1,10 @@
-import { ADD_TO_CART } from "../actionTypes";
-const initialState = {
-  cart: []
-};
+import { FOO } from "../actionTypes";
+const initialState = "";
+
 const foo = (state = initialState, action) => {
     console.log('foo reducer: ' + JSON.stringify(state));
     switch (action.type) {
-      case ADD_TO_CART: {
+      case FOO: {
         return state;
       }
       default: {

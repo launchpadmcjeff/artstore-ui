@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { connect } from "react-redux";
 
-export default class ShoppingStatus extends Component {
+class ShoppingStatus extends Component {
     render() {
         return (
             <div className="Shopping-status">
@@ -12,3 +13,12 @@ export default class ShoppingStatus extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    console.log('mapStateToProps: ' + JSON.stringify(state));
+    return {};
+  };
+
+export default connect(
+    mapStateToProps
+  )(ShoppingStatus);
