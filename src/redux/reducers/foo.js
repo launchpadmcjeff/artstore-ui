@@ -7,7 +7,7 @@ const foo = (state = initialState, action) => {
     console.log('foo reducer');
     switch (action.type) {
       case ADD_TO_CART: {
-        return action.payload.filter;
+        return state;
       }
       default: {
         return state;
