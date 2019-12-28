@@ -14,9 +14,11 @@ class ShoppingStatus extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, dispatch) => {
     console.log('mapStateToProps: ' + JSON.stringify(state));
+    console.log('mapStateToProps: ' + JSON.stringify(dispatch));
     console.log(state);
+    console.log(dispatch);
     return { itemCount: state.cart.length };
 };
 

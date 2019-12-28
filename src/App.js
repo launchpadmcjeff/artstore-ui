@@ -3,8 +3,7 @@ import './App.css';
 
 import ProductsList from './components/ProductsList'
 import ShoppingStatus from './components/ShoppingStatus'
-
-
+import { Link } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,31 +15,33 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="App">
-        <header>
-          <ShoppingStatus />
-          <h1>The Artstore</h1>
-        </header>
+        <div className="App">
+          <header>
+            <Link to="/cart">Cart</Link>
+            <ShoppingStatus />
+            <h1>The Artstore</h1>
+          </header>
 
-        <ProductsList />
+          <ProductsList />
 
-        <footer>
+          <footer>
 
-          <button onClick={this.getProducts}>
-            getProducts
+            <button onClick={this.getProducts}>
+              getProducts
 </button>
-          <button onClick={this.getOrders}>
-            getOrders
+            <button onClick={this.getOrders}>
+              getOrders
 </button>
-          <button onClick={this.getOrders99}>
-            getOrders99
+            <button onClick={this.getOrders99}>
+              getOrders99
 </button>
-          <button onClick={this.postOrders}>
-            postOrders
+            <button onClick={this.postOrders}>
+              postOrders
 </button>
-        </footer>
+          </footer>
 
-      </div>
+        </div>
+
     );
   }
 
