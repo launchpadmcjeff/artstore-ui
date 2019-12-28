@@ -3,9 +3,7 @@ import './App.css';
 
 import ProductsList from './components/ProductsList'
 import ShoppingStatus from './components/ShoppingStatus'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import Cart from './components/Cart';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +15,6 @@ class App extends React.Component {
   render() {
 
     return (
-      <Router>
         <div className="App">
           <header>
             <Link to="/cart">Cart</Link>
@@ -45,12 +42,6 @@ class App extends React.Component {
 
         </div>
 
-        <Switch>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-        </Switch>
-      </Router>
     );
   }
 

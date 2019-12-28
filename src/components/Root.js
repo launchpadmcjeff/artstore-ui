@@ -9,11 +9,11 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route path="/">
-          <App />
-        </Route>
         <Route path="/cart">
           <Cart />
+        </Route>
+        <Route path="/">
+          <App />
         </Route>
       </Switch>
     </Router>
