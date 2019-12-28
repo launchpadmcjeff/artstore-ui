@@ -4,7 +4,7 @@ import './App.css';
 import ProductsList from './components/ProductsList'
 import ShoppingStatus from './components/ShoppingStatus'
 
-
+import { Link } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header>
+          <Link to="/cart">Cart</Link>
           <ShoppingStatus />
           <h1>The Artstore</h1>
         </header>
