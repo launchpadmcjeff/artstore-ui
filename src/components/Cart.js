@@ -10,7 +10,7 @@ class Cart extends Component {
         return (
             <div className="Cart">
                 <Header />
-                <div className="items">
+                <div className="container">
                     <h1>CART</h1>
                     <Link to="/">Catalog</Link>
                     <button onClick={this.getProducts}>

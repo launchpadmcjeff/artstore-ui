@@ -12,12 +12,40 @@ code {
     monospace;
 }
 
-.Cart {
+.Cart, .Orders, .Payment, .Shipping {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.Cart .items {
+.Cart .container, .Orders .container, .Payment .container, .Shipping .container {
   height: 100%;
+}
+
+footer {
+  display: flex;
+  /* justify-content: space-around; */
+  color: white;
+}
+ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+li a {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+.active {
+  background-color: #4CAF50;
+  color: white;
 }

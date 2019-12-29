@@ -56,16 +56,16 @@ footer {
 
 
 header {
-  padding: 2rem;
+  padding: 1rem;
   background-color: black;
 }
 
 header h1 {
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   color: #f3cd14;
   font-family: 'Tangerine', cursive;
-  font-size: 4rem;
+  font-size: 3rem;
   text-shadow: 4px 4px 4px #e4e635;
 }
 
