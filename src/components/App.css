@@ -47,6 +47,9 @@ footer {
   border-radius: 1rem;
 }
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   
 }
 

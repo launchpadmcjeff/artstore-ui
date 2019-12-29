@@ -1,25 +1,32 @@
 import React, { Component } from 'react'
+import '../index.css';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Header from './Header';
+import Footer from './Footer';
 
 class Cart extends Component {
     render() {
         return (
-            <div>
-                <h1>CART</h1>
-                <Link to="/">Catalog</Link>
-                <button onClick={this.getProducts}>
-                    getProducts
+            <div className="Cart">
+                <Header />
+                <div className="items">
+                    <h1>CART</h1>
+                    <Link to="/">Catalog</Link>
+                    <button onClick={this.getProducts}>
+                        getProducts
 </button>
-                <button onClick={this.getOrders}>
-                    getOrders
+                    <button onClick={this.getOrders}>
+                        getOrders
 </button>
-                <button onClick={this.getOrders99}>
-                    getOrders99
+                    <button onClick={this.getOrders99}>
+                        getOrders99
 </button>
-                <button onClick={this.postOrders}>
-                    postOrders
+                    <button onClick={this.postOrders}>
+                        postOrders
 </button>
+                </div>
+                <Footer />
             </div>
         )
     }

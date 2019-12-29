@@ -5,3 +5,10 @@ The UI for the Artstore
 * tests
 * AWS deployment pipeline
 * checkout functionality
+* media query and styling for non-mobile
+* view cart
+* shipping info
+* payment
+* orders
+* filter and search catalog feature
+* 
