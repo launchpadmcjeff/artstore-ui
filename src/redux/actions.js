@@ -1,4 +1,4 @@
-import { ADD_TO_CART, FOO, BAR } from "./actionTypes";
+import { ADD_TO_CART, FOO, BAR, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE } from "./actionTypes";
 
 export const addToCart = item => ({
   type: ADD_TO_CART,
@@ -19,4 +19,18 @@ export const bar = bar => ({
   payload: {
     bar
   }
+});
+
+export const fetchProductsBegin = () => ({
+  type: FETCH_PRODUCTS_BEGIN
+});
+
+export const fetchProductsSuccess = products => ({
+  type: FETCH_PRODUCTS_SUCCESS,
+  payload: { products }
+});
+
+export const fetchProductsFailure = error => ({
+  type: FETCH_PRODUCTS_FAILURE,
+  payload: { error }
 });
