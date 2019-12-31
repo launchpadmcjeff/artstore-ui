@@ -34,19 +34,6 @@ class ProductsList extends React.Component {
       </div>
     );
   }
-
-  // render() {
-  //   const numbers = [1, 2, 3, 4, 5, 6];
-  //   const listItems = numbers.map((number) =>
-  //     <ProductHook key={number.toString()} id={number.toString()} />
-  //   );
-
-  //   return (
-  //     <div className="Products-list">
-  //       {listItems}
-  //     </div>
-  //   );
-  // }
 }
 
 const mapStateToProps = state => {console.log('ProductList mapStateToProps: ' + JSON.stringify(state)); return {
