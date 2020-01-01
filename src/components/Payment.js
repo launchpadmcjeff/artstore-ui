@@ -27,7 +27,8 @@ export class Payment extends Component {
  
 
                 Billing Address
-                - check same as shipping address
+                - radio same as shipping address
+                - radio use a different billing address
 
                 </div>
                 <Footer />

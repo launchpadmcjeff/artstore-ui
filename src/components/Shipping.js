@@ -11,12 +11,14 @@ export class Shipping extends Component {
                 <div className="container">
 
                     <h1>Shipping</h1>
-                    <div style={{ display: "grid", gridRowGap: ".2rem", width: "90%", margin: ".5rem auto" }}>
+                    <div style={{ display: "grid", gridRowGap: "1rem", width: "90%", margin: ".5rem auto" }}>
                         <h3>Contact Information</h3>
                         {/* <label htmlFor="email">Email</label> */}
                         <input id="email" name="email" autoComplete="shipping email" type="email" placeholder="Email" aria-label="Email"></input>
+                        
                         <label htmlFor="send-news">
-                            <input id="send-news" name="send-news" type="checkbox"></input>
+                            <span class="checkmark"></span>
+                            <input id="send-news" name="send-news" type="checkbox" checked="checked"></input>
                             Keep me up to date on news and exclusive offers
                         </label>
 

@@ -23,6 +23,12 @@ code {
   padding: .25rem;
 }
 
+input {
+  padding: .5rem;
+  border-radius: .25rem;
+  border: 1px solid #555;
+}
+
 footer {
   display: flex;
   /* justify-content: space-around; */
