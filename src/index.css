@@ -12,14 +12,14 @@ code {
     monospace;
 }
 
-.Cart, .Orders, .Payment, .Shipping {
-  height: 100vh;
+.Cart, .Orders, .Payment, .Shipping, .App {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.Cart .container, .Orders .container, .Payment .container, .Shipping .container {
-  height: 100%;
+.Cart .container, .Orders .container, .Payment .container, .Shipping .container, .App .container {
+  /* height: 100vh; */
 }
 
 footer {
