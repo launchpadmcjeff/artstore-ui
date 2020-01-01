@@ -12,24 +12,13 @@ export class Shipping extends Component {
 
                 <h1>Shipping</h1>
                 Contact Information
-                <form>
+                <div style={{display: "grid"}}>
                     <label htmlFor="email">Email</label>
                     <input id="email" name="email" autoComplete="shipping email" type="email" placeholder="Email"></input>
                     <input id="send-news" name="send-news" type="checkbox"></input>
                     <label htmlFor="send-news">Keep me up to date on news and exclusive offers</label>
-                </form>
 
-                Shipping Address
-                - First Name
-                - Last Name
-                - Company (Optional)
-                - Address
-                - Apt, Suite, etc (Optional)
-                - City
-                - State
-                - Zip
-                - Phone (Optional)
-                <form>
+        
                     <label htmlFor="first-name">First Name</label>
                     <input id="first-name" name="first-name" autoComplete="shipping given-name" type="text" placeholder="First Name"></input>
                     <label htmlFor="last-name">Last Name</label>
@@ -114,7 +103,6 @@ export class Shipping extends Component {
                     <label htmlFor="tel-national">Phone (Optional)</label>
                     <input id="tel-national" name="tel-national" autoComplete="shipping tel-national" type="text" placeholder="Phone (Optional)"></input>
 
-                </form>
 
                 Shipping Method
                 <select data-name="foo" id="shipping-address-level1" name="shipping-address-level1" autoComplete="shipping address-level1" type="text" placeholder="State">
@@ -125,6 +113,7 @@ export class Shipping extends Component {
                 Remember Me
                 <input id="remember-me" name="remember-me" type="checkbox"></input>
                     <label htmlFor="remember-me">Save my information for a faster checkout</label>
+                    </div>
                 </div>
                 <Footer />
             </div>

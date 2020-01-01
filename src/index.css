@@ -20,6 +20,7 @@ code {
 }
 .Cart .container, .Orders .container, .Payment .container, .Shipping .container, .App .container {
   /* height: 100vh; */
+  padding: .25rem;
 }
 
 footer {
@@ -40,6 +41,9 @@ li a {
   display: block;
   width: 100%;
   text-align: center;
+  color: #fff;
+  padding: .5rem 0;
+  border-radius: .5rem;
 }
 li a:hover {
   background-color: #555;

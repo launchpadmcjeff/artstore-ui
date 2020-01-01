@@ -12,7 +12,7 @@ export class Payment extends Component {
 
                 <h1>Payment</h1>
                 All transactions are secure and encrypted
-                <form>
+                <form style={{display: "grid"}}>
                     <label htmlFor="discount-code">Discount Code</label>
                     <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code"></input>
                     <label htmlFor="cc-number">Card Number</label>

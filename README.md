@@ -9,6 +9,8 @@ The UI for the Artstore
 * filter and search catalog feature
 * update favicon
 * enable PWA features
+* implement store persistence to localstorage: https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
+
 
 ## IN PROGRESS
 * view cart
