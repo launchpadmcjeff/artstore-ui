@@ -20,6 +20,12 @@ The UI for the Artstore
 * checkout functionality
 * 
 
+## DONE
+* aria labeling per https://developers.google.com/web/fundamentals/accessibility/semantics-aria/aria-labels-and-relationships
+* 
+
+
+
 _         _
  \_(`}`)_/
 
