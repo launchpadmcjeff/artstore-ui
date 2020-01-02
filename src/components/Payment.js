@@ -26,9 +26,19 @@ export class Payment extends Component {
                         <input id="cc-csc" name="cc-csc" autoComplete="cc-csc" type="text" placeholder="Security Code" aria-label="Security Code"></input>
 
 
-                        Billing Address
-                        - radio same as shipping address
-                        - radio use a different billing address
+
+                        <h3>Billing Address</h3>
+                        <label className="tupperware">
+                        Same as shipping address
+                            <input id="billing-eq-shipping" name="billing-eq-shipping" type="radio" defaultChecked="checked"></input>
+                            <span className="checkmark"></span>
+                        </label>
+
+                        <label className="tupperware">
+                        Use a different billing address
+                            <input id="billing-neq-shipping" name="billing-eq-shipping" type="radio" ></input>
+                            <span className="checkmark"></span>
+                        </label>
                 </div>
 
                 </div>

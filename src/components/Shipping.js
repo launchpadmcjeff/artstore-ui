@@ -15,13 +15,6 @@ export class Shipping extends Component {
                         <h3>Contact Information</h3>
                         {/* <label htmlFor="email">Email</label> */}
                         <input id="email" name="email" autoComplete="shipping email" type="email" placeholder="Email" aria-label="Email"></input>
-                        
-                        <label htmlFor="send-news">
-                            <span class="checkmark"></span>
-                            <input id="send-news" name="send-news" type="checkbox" checked="checked"></input>
-                            Keep me up to date on news and exclusive offers
-                        </label>
-
 
                         {/* <label htmlFor="first-name">First Name</label> */}
                         <input id="first-name" name="first-name" autoComplete="shipping given-name" type="text" placeholder="First Name" aria-label="First Name"></input>
@@ -114,9 +107,17 @@ export class Shipping extends Component {
                         </select>
 
                         <h3>Remember Me</h3>
-                        <label>
-                            <input id="remember-me" name="remember-me" type="checkbox"></input>
+
+                        <label className="tupperware">
+                            Keep me up to date on news and exclusive offers
+                            <input type="checkbox" defaultChecked="checked"></input>
+                            <span className="checkmark"></span>
+                        </label>
+
+                        <label className="tupperware">
                             Save my information for a faster checkout
+                            <input type="checkbox" defaultChecked="checked"></input>
+                            <span className="checkmark"></span>
                         </label>
                     </div>
                 </div>
