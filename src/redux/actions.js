@@ -1,4 +1,4 @@
-import { ADD_TO_CART, FOO, BAR, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE } from "./actionTypes";
+import { ADD_TO_CART, UPDATE_SHIPPING, BAR, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE } from "./actionTypes";
 
 export const addToCart = item => ({
   type: ADD_TO_CART,
@@ -7,11 +7,9 @@ export const addToCart = item => ({
   }
 });
 
-export const foo = foo => ({
-  type: FOO,
-  payload: {
-    foo
-  }
+export const updateShipping = shipping => ({
+  type: UPDATE_SHIPPING,
+  payload: shipping
 });
 
 export const bar = bar => ({

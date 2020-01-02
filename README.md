@@ -9,15 +9,15 @@ The UI for the Artstore
 * filter and search catalog feature
 * update favicon
 * enable PWA features
+* view cart - ui, connect to redux store
 * implement store persistence to localstorage: https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
+* checkout functionality
+* payment
+* orders
 
 
 ## IN PROGRESS
-* view cart
-* shipping info
-* payment
-* orders
-* checkout functionality
+* shipping info - connect to redux store
 * 
 
 ## DONE

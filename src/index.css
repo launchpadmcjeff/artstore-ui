@@ -127,9 +127,6 @@ li a:hover {
   color: white;
 }
 
-
-
-/* From Shipping.css */
 .tupperware {
   display: block;
   position: relative;
@@ -176,7 +173,7 @@ li a:hover {
   background-color: #ccc;
 }
 
-/* the .checkmark class sibling following an input:checked */
+/* the .radio class sibling following an input:checked */
 .tupperware input:checked ~ .checkmark, .tupperware input:checked ~ .radio {
   background-color: #333;
 }

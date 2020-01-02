@@ -1,5 +1,5 @@
 export const ADD_TO_CART = "ADD_TO_CART";
-export const FOO = "FOO";
+export const UPDATE_SHIPPING = "UPDATE_SHIPPING";
 export const BAR = "BAR";
 export const FETCH_PRODUCTS_BEGIN   = 'FETCH_PRODUCTS_BEGIN';
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';

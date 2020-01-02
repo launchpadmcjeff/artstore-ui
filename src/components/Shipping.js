@@ -2,8 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Header from './Header';
 import Footer from './Footer';
+import { updateShipping } from '../redux/actions';
 
 export class Shipping extends Component {
+    componentWillMount() {
+        // this.props.updateShipping({email: "foo@bar.com"});
+    }
+
+    foo = (e) => {
+        console.log(e);
+        console.log(e.target);
+        this.props.updateShipping({"email": e.target.name});
+
+    }
+
     render() {
         return (
             <div className="Shipping">
@@ -13,23 +25,14 @@ export class Shipping extends Component {
                     <h1>Shipping</h1>
                     <div style={{ display: "grid", gridRowGap: "1rem", width: "90%", margin: ".5rem auto" }}>
                         <h3>Contact Information</h3>
-                        {/* <label htmlFor="email">Email</label> */}
-                        <input id="email" name="email" autoComplete="shipping email" type="email" placeholder="Email" aria-label="Email"></input>
-
-                        {/* <label htmlFor="first-name">First Name</label> */}
-                        <input id="first-name" name="first-name" autoComplete="shipping given-name" type="text" placeholder="First Name" aria-label="First Name"></input>
-                        {/* <label htmlFor="last-name">Last Name</label> */}
-                        <input id="last-name" name="last-name" autoComplete="shipping family-name" type="text" placeholder="Last Name" aria-label="Last Name"></input>
-                        {/* <label htmlFor="shipping-organization">Company</label> */}
-                        <input id="shipping-organization" name="shipping-organization" autoComplete="shipping organization" type="text" placeholder="Company (Optional)" aria-label="Company (Optional)"></input>
-                        {/* <label htmlFor="shipping-address-line1">Address</label> */}
-                        <input id="shipping-address-line1" name="shipping-address-line1" autoComplete="shipping address-line1" type="text" placeholder="Address" aria-label="Address"></input>
-                        {/* <label htmlFor="shipping-address-line2">Apt, Suite, etc (Optional)</label> */}
-                        <input id="shipping-address-line2" name="shipping-address-line2" autoComplete="shipping address-line2" type="text" placeholder="Apt, Suite, etc (Optional)" aria-label="Apt, Suite, etc (Optional)"></input>
-                        {/* <label htmlFor="shipping-address-level2">City</label> */}
-                        <input id="shipping-address-level2" name="shipping-address-level2" autoComplete="shipping address-level2" type="text" placeholder="City" aria-label="City"></input>
-                        {/* <label htmlFor="shipping-address-level1">State</label> */}
-                        <select data-name="foo" id="shipping-address-level1" name="shipping-address-level1" autoComplete="shipping address-level1" type="text" placeholder="State" aria-label="State">
+                        <input id="email" name="email" autoComplete="shipping email" type="email" onChange={this.foo} placeholder="Email" aria-label="Email"></input>
+                        <input id="given-name" name="given-name" autoComplete="shipping given-name" type="text" onChange={this.foo} placeholder="First Name" aria-label="First Name"></input>
+                        <input id="family-name" name="family-name" autoComplete="shipping family-name" type="text" placeholder="Last Name" aria-label="Last Name"></input>
+                        <input id="organization" name="organization" autoComplete="shipping organization" type="text" placeholder="Company (Optional)" aria-label="Company (Optional)"></input>
+                        <input id="address-line1" name="address-line1" autoComplete="shipping address-line1" type="text" placeholder="Address" aria-label="Address"></input>
+                        <input id="address-line2" name="address-line2" autoComplete="shipping address-line2" type="text" placeholder="Apt, Suite, etc (Optional)" aria-label="Apt, Suite, etc (Optional)"></input>
+                        <input id="address-level2" name="address-level2" autoComplete="shipping address-level2" type="text" placeholder="City" aria-label="City"></input>
+                        <select data-name="foo" id="address-level1" name="shipping-address-level1" autoComplete="shipping address-level1" type="text" placeholder="State" aria-label="State">
                             <option disabled="">State</option>
                             <option data-description="Alabama" value="AL">Alabama</option>
                             <option data-description="Alaska" value="AK">Alaska</option>
@@ -94,14 +97,12 @@ export class Shipping extends Component {
                             <option data-description="Armed Forces Europe" value="AE">Armed Forces Europe</option>
                             <option data-description="Armed Forces Pacific" value="AP">Armed Forces Pacific</option>
                         </select>
-                        {/* <label htmlFor="postal-code">ZIP Code</label> */}
                         <input id="postal-code" name="postal-code" autoComplete="shipping postal-code" type="text" placeholder="ZIP Code" aria-label="ZIP Code"></input>
-                        {/* <label htmlFor="tel-national">Phone (Optional)</label> */}
                         <input id="tel-national" name="tel-national" autoComplete="shipping tel-national" type="text" placeholder="Phone (Optional)" aria-label="Phone (Optional)"></input>
 
 
                         <h3>Shipping Method</h3>
-                        <select data-name="foo" id="shipping-address-level1" name="shipping-address-level1" autoComplete="shipping address-level1" type="text" placeholder="Choose Shipping" aria-label="Choose Shipping">
+                        <select data-name="foo" id="address-level1" name="address-level1" autoComplete="shipping address-level1" type="text" placeholder="Choose Shipping" aria-label="Choose Shipping">
                             <option disabled="">Choose Shipping...</option>
                             <option value="USPS">USPS Priority Mail</option>
                         </select>
@@ -132,6 +133,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
+    updateShipping
 
 }
 
