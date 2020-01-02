@@ -31,13 +31,13 @@ export class Payment extends Component {
                         <label className="tupperware">
                         Same as shipping address
                             <input id="billing-eq-shipping" name="billing-eq-shipping" type="radio" defaultChecked="checked"></input>
-                            <span className="checkmark"></span>
+                            <span className="radio"></span>
                         </label>
 
                         <label className="tupperware">
                         Use a different billing address
                             <input id="billing-neq-shipping" name="billing-eq-shipping" type="radio" ></input>
-                            <span className="checkmark"></span>
+                            <span className="radio"></span>
                         </label>
                 </div>
 

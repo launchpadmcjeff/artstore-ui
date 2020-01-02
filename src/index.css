@@ -1,3 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+footer {
+  padding: 2rem;
+  background-color: black;
+  color: #fff;
+  display: flex;
+  /* justify-content: space-around; */
+  color: white;
+}
+
+.Shopping-status {
+  display: flex;
+  flex-direction: row-reverse;
+  color: white;
+}
+.Shopping-status span {
+  /* padding: 1rem; */
+  margin-left: .5rem;
+}
+
+.Product-hook {
+  padding: 2rem;
+  /* overflow: none; */
+  border: .2rem solid gold;
+  margin-bottom: .25rem;
+ 
+}
+.Product-hook img {
+  /* display: block; */
+  width: 100%;
+}
+
+
+.Product-hook button {
+  display: block;
+  padding: 1rem 2rem;
+  margin: 1rem auto;
+  background-color: #000000;
+  border: none;
+  border-radius: 1rem;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+
+
+header {
+  padding: 1rem;
+  background-color: black;
+}
+
+header h1 {
+  text-align: center;
+  padding: 1rem;
+  color: #f3cd14;
+  font-family: 'Tangerine', cursive;
+  font-size: 3rem;
+  text-shadow: 4px 4px 4px #e4e635;
+}
+
 
 
 body {
@@ -31,11 +100,7 @@ input {
   border: 1px solid #555;
 }
 
-footer {
-  display: flex;
-  /* justify-content: space-around; */
-  color: white;
-}
+
 ul {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -89,7 +154,7 @@ li a:hover {
 }
 
 /* Create a custom radio button */
-.checkmark {
+.radio {
   position: absolute;
   top: 0;
   left: 0;
@@ -99,40 +164,41 @@ li a:hover {
   border-radius: 50%;
 }
 /* Create a custom checkbox */
-/* .checkmark {
+.checkmark {
   position: absolute;
   top: 0;
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
-} */
+  background-color: #aaa;
+}
 
 /* the .checkmark class sibling following an input */
-.tupperware:hover input ~ .checkmark {
+.tupperware:hover input ~ .checkmark, .tupperware:hover input ~ .radio {
   background-color: #ccc;
 }
 
 /* the .checkmark class sibling following an input:checked */
-.tupperware input:checked ~ .checkmark {
+.tupperware input:checked ~ .checkmark, .tupperware input:checked ~ .radio {
   background-color: #333;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
+.checkmark:after, .radio:after {
   content: "";
   position: absolute;
   display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
-.tupperware input:checked ~ .checkmark:after {
+.tupperware input:checked ~ .checkmark:after, .tupperware input:checked ~ .radio:after {
   display: block;
 }
 
-/* Style the indicator (dot/circle) */
-.tupperware .checkmark:after {
-     top: 9px;
+
+/* radio  */
+.tupperware .radio:after {
+    top: 9px;
     left: 9px;
     width: 8px;
     height: 8px;
@@ -142,18 +208,18 @@ li a:hover {
 
 
 
-/* Style the checkmark/indicator */
-/* .tupperware .checkmark:after {
+/* checkbox */
+.tupperware .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid gold;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-} */
+}
 
 select {
   padding: .5rem;
