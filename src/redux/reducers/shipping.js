@@ -1,5 +1,5 @@
 import { UPDATE_SHIPPING } from "../actionTypes";
-const initialState = {};
+const initialState = {'news-and-offers': true, 'save-info': true};
 
 const shipping = (state = initialState, action) => {
   switch (action.type) {

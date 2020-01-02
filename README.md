@@ -3,6 +3,7 @@ The UI for the Artstore
 
 
 ## TODO
+* chat feature
 * tests
 * media query and styling for non-mobile
 * AWS deployment pipeline
