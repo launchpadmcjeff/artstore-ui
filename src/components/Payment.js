@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Header from './Header';
 import Footer from './Footer';
 import { updatePayment } from '../redux/actions'; 
+import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Payment extends Component {
     updatePayment = (e) => {
@@ -32,7 +34,7 @@ export class Payment extends Component {
                 <Header />
                 <div className="container">
 
-                    <h1>Payment</h1>
+                    <h1>Payment <FontAwesomeIcon icon={faFileInvoiceDollar} /></h1>
                     <div style={{ display: "grid", gridRowGap: "1rem", width: "90%", margin: ".5rem auto" }}>
 
                         All transactions are secure and encrypted

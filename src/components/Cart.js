@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
+import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Cart extends Component {
     render() {
@@ -11,20 +13,56 @@ class Cart extends Component {
             <div className="Cart">
                 <Header />
                 <div className="container">
-                    <h1>CART</h1>
-                    <Link to="/">Catalog</Link>
-                    <button onClick={this.getProducts}>
-                        getProducts
-</button>
-                    <button onClick={this.getOrders}>
-                        getOrders
-</button>
-                    <button onClick={this.getOrders99}>
-                        getOrders99
-</button>
-                    <button onClick={this.postOrders}>
-                        postOrders
-</button>
+                    <h1>CART <FontAwesomeIcon icon={faShoppingCart} /></h1>
+                    <div style={{ "overflow-x:": "auto" }}>
+
+                        <table>
+                            <thead>
+
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>lorem2</td>
+                                    <td>2</td>
+                                    <td>$29.99</td>
+                                    <td>$59.99</td>
+                                </tr>
+                                <tr>
+                                    <td>lorem2</td>
+                                    <td>3</td>
+                                    <td>$36.99</td>
+                                    <td>$129.99</td>
+                                </tr>
+                                <tr>
+                                    <td>lorem2</td>
+                                    <td>1</td>
+                                    <td>$119.99</td>
+                                    <td>$119.99</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="3">Subtotal</td>
+                                    <td>$1939.36</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="3">Tax</td>
+                                    <td>$36.36</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="3">Total</td>
+                                    <td>$2013.36</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <FontAwesomeIcon icon={faCartArrowDown} />
+
+
                 </div>
                 <Footer />
             </div>

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Header from './Header';
 import Footer from './Footer';
 import { updateShipping } from '../redux/actions';
+import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Shipping extends Component {
 
@@ -23,7 +25,7 @@ export class Shipping extends Component {
                 <Header />
                 <div className="container">
 
-                    <h1>Shipping</h1>
+                    <h1>Shipping <FontAwesomeIcon icon={faShippingFast} /></h1>
                     <div style={{ display: "grid", gridRowGap: "1rem", width: "90%", margin: ".5rem auto" }}>
                         <h3>Contact Information</h3>
                         <input id="email" name="email" autoComplete="shipping email" type="email" onChange={this.updateShipping} placeholder="Email" aria-label="Email" value={this.props.email}></input>
