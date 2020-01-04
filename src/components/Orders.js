@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Header from './Header';
 import Footer from './Footer';
-import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages } from '@fortawesome/free-solid-svg-icons'
+import { faImages } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Orders extends Component {

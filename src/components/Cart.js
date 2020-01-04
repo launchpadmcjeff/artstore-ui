@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import '../index.css';
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
-import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 class Cart extends Component {
     render() {

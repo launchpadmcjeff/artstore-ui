@@ -38,7 +38,6 @@ export function fetchProducts() {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log('**** fetchProducts: ****'); //+ JSON.stringify(json));
         dispatch(fetchProductsSuccess(json));
         return json;
       })

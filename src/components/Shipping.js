@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Header from './Header';
 import Footer from './Footer';
 import { updateShipping } from '../redux/actions';
-import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages } from '@fortawesome/free-solid-svg-icons'
+import {  faShippingFast } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Shipping extends Component {

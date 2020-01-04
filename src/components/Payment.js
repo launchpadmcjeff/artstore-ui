@@ -3,16 +3,10 @@ import { connect } from 'react-redux'
 import Header from './Header';
 import Footer from './Footer';
 import { updatePayment } from '../redux/actions'; 
-import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages } from '@fortawesome/free-solid-svg-icons'
+import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Payment extends Component {
-
-    constructor(props) {
-        super(props);
-        
-    
-    }
 
     updatePayment = (e) => {
         console.log(e.target);
