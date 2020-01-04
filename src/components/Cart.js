@@ -6,6 +6,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faImages, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 class Cart extends Component {
     render() {
@@ -14,7 +15,7 @@ class Cart extends Component {
                 <Header />
                 <div className="container">
                     <h1>CART <FontAwesomeIcon icon={faShoppingCart} /></h1>
-                    <div style={{ "overflow-x:": "auto" }}>
+                    <div style={{ "overflowX:": "auto" }}>
 
                         <table>
                             <thead>
@@ -28,19 +29,19 @@ class Cart extends Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>lorem2</td>
+                                    <td>The Starry Night, June 1889</td>
                                     <td>2</td>
                                     <td>$29.99</td>
                                     <td>$59.99</td>
                                 </tr>
                                 <tr>
-                                    <td>lorem2</td>
+                                    <td>Self-Portrait, Spring 1887, Oil on pasteboard, 42 × 33.7 cm</td>
                                     <td>3</td>
                                     <td>$36.99</td>
                                     <td>$129.99</td>
                                 </tr>
                                 <tr>
-                                    <td>lorem2</td>
+                                    <td>The Round of the Prisoners, 1890</td>
                                     <td>1</td>
                                     <td>$119.99</td>
                                     <td>$119.99</td>
@@ -58,9 +59,24 @@ class Cart extends Component {
                                     <td>$2013.36</td>
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colSpan="4">
+                                        <button onClick={this.getOrders99}>
+                                            APPLY
+                                        </button>
+                                    
+                                        <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code" aria-label="Discount Code" onChange={this.updatePayment} value={this.props['discount-code']}></input>
+                                    </td>
+
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
-                    <FontAwesomeIcon icon={faCartArrowDown} />
+                    <button onClick={this.postOrders} style={{ width: '100%', padding: '1rem', bgColor: '#ccc' }}>
+
+                        <FontAwesomeIcon icon={faCartArrowDown} size="1x" color="#f3cd14" /> BUY NOW
+                    </button>
 
 
                 </div>
