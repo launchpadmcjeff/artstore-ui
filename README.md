@@ -3,18 +3,19 @@ The UI for the Artstore
 
 
 ## TODO
-* chat feature
-* tests
+* cart page should display items in cart; view cart - ui, connect to redux store
+* applying discount code should update cart
+* checkout functionality; cart buy now should submit order and update orders page
+* orders page should display actual orders
+* shipping page redux store need initialization for uncontrolled to controlled component warning
 * media query and styling for non-mobile
-* AWS deployment pipeline
-* filter and search catalog feature
 * update favicon
+* AWS deployment pipeline
+* tests
+* chat feature
 * enable PWA features
-* view cart - ui, connect to redux store
+* filter and search catalog feature
 * implement store persistence to localstorage: https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
-* checkout functionality
-* payment
-* orders
 
 
 ## IN PROGRESS
@@ -23,6 +24,7 @@ The UI for the Artstore
 
 ## DONE
 * aria labeling per https://developers.google.com/web/fundamentals/accessibility/semantics-aria/aria-labels-and-relationships
+* payment
 * 
 
 
