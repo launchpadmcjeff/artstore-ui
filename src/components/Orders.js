@@ -13,7 +13,7 @@ export class Orders extends Component {
                 <div className="container">
 
                 <h1>Orders <FontAwesomeIcon icon={faImages} /></h1>
-                <div style={{ "overflow-x:": "auto" }}>
+                <div style={{ "overflowX:": "auto" }}>
 
 <table>
     <thead>
