@@ -7,6 +7,13 @@ import { faShoppingCart, faShippingFast, faFileImage, faFileInvoiceDollar, faIma
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Payment extends Component {
+
+    constructor(props) {
+        super(props);
+        
+    
+    }
+
     updatePayment = (e) => {
         console.log(e.target);
         console.log(e.target.checked);
@@ -38,7 +45,6 @@ export class Payment extends Component {
                     <div style={{ display: "grid", gridRowGap: "1rem", width: "90%", margin: ".5rem auto" }}>
 
                         All transactions are secure and encrypted
-                        <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code" aria-label="Discount Code" onChange={this.updatePayment} value={this.props['discount-code']}></input>
                         <input id="cc-number" name="cc-number" autoComplete="cc-number" type="text" placeholder="Card Number" aria-label="Card Number" onChange={this.updatePayment} value={this.props['cc-number']}></input>
                         <input id="cc-name" name="cc-name" autoComplete="cc-name" type="text" placeholder="Name on Card" aria-label="Name on Card" onChange={this.updatePayment} value={this.props['cc-name']}></input>
                         <input id="cc-exp" name="cc-exp" autoComplete="cc-exp" type="text" placeholder="Expiration MM/YY" aria-label="Expiration MM/YY" onChange={this.updatePayment} value={this.props['cc-exp']}></input>
