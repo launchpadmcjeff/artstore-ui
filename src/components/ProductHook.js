@@ -7,15 +7,18 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 class ProductHook extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { item: "" };
-  }
-
   render() {
     return (
       <div className="Product-hook">
-        <img src={'http://localhost:8080/artstore/img/' + this.props.id + '.jpg'} alt="Van Gogh Self Portrait" />
+        <img src={'http://localhost:8080/artstore/img/' + this.props.imageId + '.jpg'} alt={this.props.name} />
+        <h2>
+        {this.props.name}
+        </h2>
+        <h3>
+        ${this.props.price}
+        </h3>
+
+
         <button onClick={this.getOrders99}>
           <FontAwesomeIcon icon={faCartPlus} size="2x" color="#f3cd14" />
         </button>
@@ -27,7 +30,7 @@ class ProductHook extends React.Component {
     e.preventDefault();
     console.log('getOrders99: ' + this.props.id);
     this.props.addToCart(this.props.id);
-    this.setState({ item: this.props.id });
+    // this.setState({ item: this.props.id });
     const response = await fetch('http://localhost:8080/artstore/rest/orders/99', { headers: { 'Content-Type': 'application/json' } });
     const myJson = await response.json();
     console.log(JSON.stringify(myJson));
