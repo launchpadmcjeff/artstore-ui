@@ -14,13 +14,15 @@ td, th {
 }
 
 /* td:nth-child(3), td:nth-child(4) { */
-th:nth-last-child(1), th:nth-last-child(2),
+/* th:nth-last-child(1), th:nth-last-child(2),
 td:nth-last-child(1), td:nth-last-child(2) {
   text-align: right;
+} */
+th:nth-last-child(1), td:nth-last-child(1) {
+  text-align: right;
 }
-th:nth-last-child(3),
-td:nth-last-child(3) {
-  text-align: center;
+tr:nth-last-child(3), tr:nth-last-child(2), tr:nth-last-child(1) {
+  text-align: right;
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}

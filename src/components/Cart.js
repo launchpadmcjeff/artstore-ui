@@ -20,50 +20,42 @@ class Cart extends Component {
 
                                 <tr>
                                     <th>Name</th>
-                                    <th>Quantity</th>
-                                    <th>Unit Price</th>
-                                    <th>Total Price</th>
+                                    <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>The Starry Night, June 1889</td>
-                                    <td>2</td>
-                                    <td>$29.99</td>
                                     <td>$59.99</td>
                                 </tr>
                                 <tr>
                                     <td>Self-Portrait, Spring 1887, Oil on pasteboard, 42 × 33.7 cm</td>
-                                    <td>3</td>
-                                    <td>$36.99</td>
                                     <td>$129.99</td>
                                 </tr>
                                 <tr>
                                     <td>The Round of the Prisoners, 1890</td>
-                                    <td>1</td>
-                                    <td>$119.99</td>
                                     <td>$119.99</td>
                                 </tr>
                                 <tr>
-                                    <td colSpan="3">Subtotal</td>
+                                    <td >Subtotal</td>
                                     <td>$1939.36</td>
                                 </tr>
                                 <tr>
-                                    <td colSpan="3">Tax</td>
+                                    <td >Tax</td>
                                     <td>$36.36</td>
                                 </tr>
                                 <tr>
-                                    <td colSpan="3">Total</td>
+                                    <td >Total</td>
                                     <td>$2013.36</td>
                                 </tr>
-                            </tbody>
+                                </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colSpan="4">
+                                    <td colSpan="2">
                                         <button onClick={this.getOrders99}>
                                             APPLY
                                         </button>
-                                    
+
                                         <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code" aria-label="Discount Code" onChange={this.updatePayment} value={this.props['discount-code']}></input>
                                     </td>
 
