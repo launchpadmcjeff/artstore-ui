@@ -14,22 +14,20 @@ class Cart extends Component {
                 <div className="container">
                     <h1>CART <FontAwesomeIcon icon={faShoppingCart} /></h1>
                     <div style={{ "overflowX:": "auto" }}>
-
                         <table>
                             <thead>
-
                                 <tr>
                                     <th>Name</th>
                                     <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {this.props.lineItems.map(product =>
-                                <tr>
-                                    <td>{product.name}</td>
-                                    <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
-                                </tr>
-        )}
+                                {this.props.lineItems.map(product =>
+                                    <tr>
+                                        <td>{product.name}</td>
+                                        <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                    </tr>
+                                )}
                                 <tr>
                                     <td >Subtotal</td>
                                     <td>{(this.props.subtotal / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
@@ -42,27 +40,22 @@ class Cart extends Component {
                                     <td >Total</td>
                                     <td>{(this.props.total / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
-                                </tbody>
+                            </tbody>
                             <tfoot>
                                 <tr>
                                     <td colSpan="2">
                                         <button onClick={this.getOrders99}>
                                             APPLY
                                         </button>
-
                                         <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code" aria-label="Discount Code" onChange={this.updatePayment} value={this.props['discount-code']}></input>
                                     </td>
-
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                     <button onClick={this.postOrders} style={{ width: '100%', padding: '1rem', bgColor: '#ccc' }}>
-
                         <FontAwesomeIcon icon={faCartArrowDown} size="1x" color="#f3cd14" /> BUY NOW
                     </button>
-
-
                 </div>
                 <Footer />
             </div>
@@ -126,7 +119,7 @@ class Cart extends Component {
 const mapStateToProps = (state) => (state.cart)
 
 const mapDispatchToProps = {
-    
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
