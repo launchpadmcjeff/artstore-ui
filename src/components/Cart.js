@@ -24,29 +24,23 @@ class Cart extends Component {
                                 </tr>
                             </thead>
                             <tbody>
+                            {this.props.lineItems.map(product =>
                                 <tr>
-                                    <td>The Starry Night, June 1889</td>
-                                    <td>$59.99</td>
+                                    <td>{product.name}</td>
+                                    <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
-                                <tr>
-                                    <td>Self-Portrait, Spring 1887, Oil on pasteboard, 42 × 33.7 cm</td>
-                                    <td>$129.99</td>
-                                </tr>
-                                <tr>
-                                    <td>The Round of the Prisoners, 1890</td>
-                                    <td>$119.99</td>
-                                </tr>
+        )}
                                 <tr>
                                     <td >Subtotal</td>
-                                    <td>$1939.36</td>
+                                    <td>{(this.props.subtotal / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                                 <tr>
                                     <td >Tax</td>
-                                    <td>$36.36</td>
+                                    <td>{(this.props.tax / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                                 <tr>
                                     <td >Total</td>
-                                    <td>$2013.36</td>
+                                    <td>{(this.props.total / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                                 </tbody>
                             <tfoot>
@@ -129,9 +123,7 @@ class Cart extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = (state) => (state.cart)
 
 const mapDispatchToProps = {
     
