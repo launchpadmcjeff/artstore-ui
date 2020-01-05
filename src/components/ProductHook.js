@@ -15,7 +15,7 @@ class ProductHook extends React.Component {
         {this.props.name}
         </h2>
         <h3>
-        ${this.props.price}
+        ${this.props.price / 100}
         </h3>
 
 

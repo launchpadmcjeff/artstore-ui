@@ -22,9 +22,9 @@ const cart = (state = initialState, action) => {
         price: price
       };
 
-      const subtotal = (state.subtotal * 100 + lineItem.price * 100) / 100;
+      const subtotal = state.subtotal + lineItem.price;
 
-      const tax = (Math.round((subtotal * .06) * 100) / 100);
+      const tax = Math.round(subtotal * .06);
       
       const total = subtotal + tax;
 
