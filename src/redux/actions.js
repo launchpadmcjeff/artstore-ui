@@ -1,9 +1,11 @@
 import { ADD_TO_CART, UPDATE_SHIPPING, UPDATE_PAYMENT, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE } from "./actionTypes";
 
-export const addToCart = item => ({
+export const addToCart = (id, name, price) => ({
   type: ADD_TO_CART,
   payload: {
-    item
+    id,
+    name,
+    price
   }
 });
 

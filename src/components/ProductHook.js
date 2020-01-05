@@ -29,7 +29,7 @@ class ProductHook extends React.Component {
    getOrders99 = async (e) => {
     e.preventDefault();
     console.log('getOrders99: ' + this.props.id);
-    this.props.addToCart(this.props.id);
+    this.props.addToCart(this.props.id, this.props.name, this.props.price);
     // this.setState({ item: this.props.id });
     const response = await fetch('http://localhost:8080/artstore/rest/orders/99', { headers: { 'Content-Type': 'application/json' } });
     const myJson = await response.json();
