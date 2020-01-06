@@ -1,4 +1,5 @@
-import { ADD_TO_CART, UPDATE_SHIPPING, UPDATE_PAYMENT, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE } from "./actionTypes";
+import { ADD_TO_CART, UPDATE_SHIPPING, UPDATE_PAYMENT, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE,
+        SUBMIT_ORDER_BEGIN, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_FAILURE } from "./actionTypes";
 
 export const addToCart = (id, name, price) => ({
   type: ADD_TO_CART,
@@ -44,6 +45,33 @@ export function fetchProducts() {
         return json;
       })
       .catch(error => dispatch(fetchProductsFailure(error)));
+  };
+}
+export const submitOrderBegin = () => ({
+  type: SUBMIT_ORDER_BEGIN
+});
+
+export const submitOrderSuccess = order => ({
+  type: SUBMIT_ORDER_SUCCESS,
+  payload: order
+});
+
+export const submitOrderFailure = error => ({
+  type: SUBMIT_ORDER_FAILURE,
+  payload: { error }
+});
+
+export function submitOrder() {
+  return dispatch => {
+    dispatch(submitOrderBegin());
+    return fetch('http://localhost:8080/artstore/rest/products', { headers: { 'Content-Type': 'application/json' } })
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(json => {
+        dispatch(submitOrderSuccess(json));
+        return json;
+      })
+      .catch(error => dispatch(submitOrderFailure(error)));
   };
 }
 
