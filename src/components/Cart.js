@@ -23,7 +23,7 @@ class Cart extends Component {
                             </thead>
                             <tbody>
                                 {this.props.lineItems.map(product =>
-                                    <tr>
+                                    <tr key={product.id}>
                                         <td>{product.name}</td>
                                         <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                     </tr>
