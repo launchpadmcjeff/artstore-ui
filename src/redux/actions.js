@@ -1,5 +1,7 @@
-import { ADD_TO_CART, UPDATE_SHIPPING, UPDATE_PAYMENT, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE,
-        SUBMIT_ORDER_BEGIN, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_FAILURE } from "./actionTypes";
+import {
+  ADD_TO_CART, UPDATE_SHIPPING, UPDATE_PAYMENT, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE,
+  SUBMIT_ORDER_BEGIN, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_FAILURE
+} from "./actionTypes";
 
 export const addToCart = (id, name, price) => ({
   type: ADD_TO_CART,
@@ -61,10 +63,24 @@ export const submitOrderFailure = error => ({
   payload: { error }
 });
 
-export function submitOrder() {
+export function submitOrder(data) {
   return dispatch => {
     dispatch(submitOrderBegin());
-    return fetch('http://localhost:8080/artstore/rest/products', { headers: { 'Content-Type': 'application/json' } })
+    console.log(JSON.stringify(data));
+    // const data = {};
+    return fetch('http://localhost:8080/artstore/rest/orders', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *client
+      body: JSON.stringify(data)
+    })
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {

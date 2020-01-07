@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { faShoppingCart, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { submitOrder } from '../redux/actions'
 
 class Cart extends Component {
     render() {
@@ -53,7 +54,7 @@ class Cart extends Component {
                             </tfoot>
                         </table>
                     </div>
-                    <button onClick={this.postOrders} style={{ width: '100%', padding: '1rem', bgColor: '#ccc' }}>
+                    <button onClick={this.getOrders99} style={{ width: '100%', padding: '1rem', bgColor: '#ccc' }}>
                         <FontAwesomeIcon icon={faCartArrowDown} size="1x" color="#f3cd14" /> BUY NOW
                     </button>
                 </div>
@@ -62,64 +63,44 @@ class Cart extends Component {
         )
     }
 
+    testItem = {
+        "itemCount": "2",
+        "subTotal": "0",
+        "tax": "0",
+        "total": "0",
+        "shippingMethod": "USPS",
+        "subscribeNewsOffers": true,
+        "saveInfo": true,
+        "shippingAddress": {
 
-
-    getProducts = async (e) => {
-        e.preventDefault();
-        const response = await fetch('http://localhost:8080/artstore/rest/products', { headers: { 'Content-Type': 'application/json' } });
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
+        },
+        "billingAddress": {
+            "email": "foo@bar.com",
+            "givenName": "",
+            "familyName": "",
+            "organization": "",
+            "addressLine1": "",
+            "addressLine2": "",
+            "addressLevel2": "",
+            "addressLevel1": "",
+            "postalCode": "",
+            "telNational": ""
+        }
 
     }
     getOrders99 = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/artstore/rest/orders/99', { headers: { 'Content-Type': 'application/json' } });
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
-
-    }
-    getOrders = async (e) => {
-        e.preventDefault();
-        const response = await fetch('http://localhost:8080/artstore/rest/orders', { headers: { 'Content-Type': 'application/json' } });
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
-
-    }
-
-    // Example POST method implementation:
-    postOrders = async (e) => {
-        e.preventDefault();
-        try {
-            const data = await this.postData('http://localhost:8080/artstore/rest/orders', {});
-            console.log(JSON.stringify(data)); // JSON-string from `response.json()` call
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    postData = async (url = '', data = {}) => {
-        // Default options are marked with *
-        const response = await fetch(url, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *client
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
-        });
-        return await response.json(); // parses JSON response into native JavaScript objects
+        console.log(this.testItem);
+        this.props.dispatch(submitOrder(this.testItem));
     }
 }
 
 const mapStateToProps = (state) => (state.cart)
 
 const mapDispatchToProps = {
+    submitOrder
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+// export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default connect(mapStateToProps)(Cart)
