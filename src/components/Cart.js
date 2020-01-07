@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import '../index.css';
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import Header from './Header';
 import Footer from './Footer';
+import { faShoppingCart, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { submitOrder } from '../redux/actions'
 
 class Cart extends Component {
     render() {
@@ -11,78 +13,117 @@ class Cart extends Component {
             <div className="Cart">
                 <Header />
                 <div className="container">
-                    <h1>CART</h1>
-                    <Link to="/">Catalog</Link>
-                    <button onClick={this.getProducts}>
-                        getProducts
-</button>
-                    <button onClick={this.getOrders}>
-                        getOrders
-</button>
-                    <button onClick={this.getOrders99}>
-                        getOrders99
-</button>
-                    <button onClick={this.postOrders}>
-                        postOrders
-</button>
+                    <h1>CART <FontAwesomeIcon icon={faShoppingCart} /></h1>
+                    <div style={{ "overflowX:": "auto" }}>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.props.cart.lineItems.map(product =>
+                                    <tr key={product.id}>
+                                        <td>{product.name}</td>
+                                        <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                    </tr>
+                                )}
+                                <tr>
+                                    <td >Subtotal</td>
+                                    <td>{(this.props.cart.subtotal / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                </tr>
+                                <tr>
+                                    <td >Tax</td>
+                                    <td>{(this.props.cart.tax / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                </tr>
+                                <tr>
+                                    <td >Total</td>
+                                    <td>{(this.props.cart.total / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colSpan="2">
+                                        <button onClick={this.applyDiscount}>
+                                            APPLY
+                                        </button>
+                                        <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code" aria-label="Discount Code" onChange={this.updatePayment} value={this.props.cart['discount-code']}></input>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <button onClick={this.buyNow} style={{ width: '100%', padding: '1rem', bgColor: '#ccc' }}>
+                        <FontAwesomeIcon icon={faCartArrowDown} size="1x" color="#f3cd14" /> BUY NOW
+                    </button>
                 </div>
                 <Footer />
             </div>
         )
     }
 
-
-
-    getProducts = async (e) => {
+    applyDiscount = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/artstore/rest/products', { headers: { 'Content-Type': 'application/json' } });
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
-
-    }
-    getOrders99 = async (e) => {
-        e.preventDefault();
-        const response = await fetch('http://localhost:8080/artstore/rest/orders/99', { headers: { 'Content-Type': 'application/json' } });
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
-
-    }
-    getOrders = async (e) => {
-        e.preventDefault();
-        const response = await fetch('http://localhost:8080/artstore/rest/orders', { headers: { 'Content-Type': 'application/json' } });
-        const myJson = await response.json();
-        console.log(JSON.stringify(myJson));
+        console.log("apply discount");
 
     }
 
-    // Example POST method implementation:
-    postOrders = async (e) => {
+    buyNow = async (e) => {
         e.preventDefault();
-        try {
-            const data = await this.postData('http://localhost:8080/artstore/rest/orders', {});
-            console.log(JSON.stringify(data)); // JSON-string from `response.json()` call
-        } catch (error) {
-            console.error(error);
-        }
+        console.log(this.buildOrder());
+        this.props.dispatch(submitOrder(this.buildOrder()));
     }
 
-    postData = async (url = '', data = {}) => {
-        // Default options are marked with *
-        const response = await fetch(url, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
+    buildOrder = () => {
+        return {
+            itemCount: this.props.cart.itemCount,
+            products: this.props.cart.lineItems,
+            subTotal: this.props.cart.subtotal,
+            tax: this.props.cart.tax,
+            total: this.props.cart.total,
+            shippingMethod: this.props.shipping['shipping-method'],
+            subscribeNewsOffers: this.props.shipping['news-and-offers'],
+            saveInfo: this.props.shipping['save-info'],
+            shippingAddress: {
+                email: this.props.shipping.email,
+                givenName: this.props.shipping['given-name'],
+                familyName: this.props.shipping['family-name'],
+                organization: this.props.shipping['organization'],
+                addressLine1: this.props.shipping['address-line1'],
+                addressLine2: this.props.shipping['address-line2'],
+                addressLevel2: this.props.shipping['address-level2'],
+                addressLevel1: this.props.shipping['address-level1'],
+                postalCode: this.props.shipping['postal-code'],
+                telNational: this.props.shipping['tel-national']
             },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *client
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
-        });
-        return await response.json(); // parses JSON response into native JavaScript objects
+            billingAddress: {
+                email: this.props.payment.email,
+                givenName: this.props.payment['given-name'],
+                familyName: this.props.payment['family-name'],
+                organization: this.props.payment['organization'],
+                addressLine1: this.props.payment['address-line1'],
+                addressLine2: this.props.payment['address-line2'],
+                addressLevel2: this.props.payment['address-level2'],
+                addressLevel1: this.props.payment['address-level1'],
+                postalCode: this.props.payment['postal-code'],
+                telNational: this.props.payment['tel-national']
+            },
+            ccNumber: this.props.payment['cc-number'],
+            ccName: this.props.payment['cc-name'],
+            ccExp: this.props.payment['cc-exp'],
+            ccCsc: this.props.payment['cc-csc'],
+            billingEqualShipping: this.props.payment['billing-eq-shipping']
+        }
     }
 }
 
-export default connect()(Cart);
+const mapStateToProps = (state) => ({cart: state.cart, shipping: state.shipping, payment: state.payment})
+
+const mapDispatchToProps = {
+    submitOrder
+
+}
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default connect(mapStateToProps)(Cart)

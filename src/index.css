@@ -1,7 +1,40 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* td:nth-child(3), td:nth-child(4) { */
+/* th:nth-last-child(1), th:nth-last-child(2),
+td:nth-last-child(1), td:nth-last-child(2) {
+  text-align: right;
+} */
+th:nth-last-child(1), td:nth-last-child(1) {
+  text-align: right;
+}
+tr:nth-last-child(3), tr:nth-last-child(2), tr:nth-last-child(1) {
+  text-align: right;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: gold;
+  color: #333;
 }
 
 footer {
@@ -35,15 +68,49 @@ footer {
   width: 100%;
 }
 
-
 .Product-hook button {
   display: block;
   padding: 1rem 2rem;
   margin: 1rem auto;
-  background-color: #000000;
+  background-color: #333;
   border: none;
   border-radius: 1rem;
 }
+
+h1 {
+  color: #333;
+}
+h2 {
+  color: #333;
+  font-size: .9rem;
+}
+h3 {
+  font-size: .9rem;
+  color: #333;
+}
+
+.Cart button {
+  width: 100%;
+  padding: .75rem 0;
+  border-radius: .5rem;
+  border: none;
+  font-size: 1.75rem;
+  /* font-family: 'Tangerine', cursive; */
+  color: #f3cd14;
+  background-color: #333;
+  /* font-size: 3rem; */
+  /* text-shadow: 4px 4px 4px #e4e635; */
+}
+.Cart tfoot button {
+  width: initial;
+  margin-right: .5rem;
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  border: none;
+  font-size: 1em;
+}
+
+
 .App {
   display: flex;
   flex-direction: column;
@@ -127,9 +194,6 @@ li a:hover {
   color: white;
 }
 
-
-
-/* From Shipping.css */
 .tupperware {
   display: block;
   position: relative;
@@ -176,7 +240,7 @@ li a:hover {
   background-color: #ccc;
 }
 
-/* the .checkmark class sibling following an input:checked */
+/* the .radio class sibling following an input:checked */
 .tupperware input:checked ~ .checkmark, .tupperware input:checked ~ .radio {
   background-color: #333;
 }

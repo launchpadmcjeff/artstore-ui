@@ -4,10 +4,6 @@ import ProductHook from './ProductHook'
 import { fetchProducts } from "../redux/actions";
 
 class ProductsList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { input: "" };
-  }
 
   componentDidMount() {
     this.props.dispatch(fetchProducts());
@@ -29,17 +25,17 @@ class ProductsList extends React.Component {
     return (
       <div className="Products-list">
         {products.map(product =>
-          <ProductHook id={product.id} key={product.id}></ProductHook>
+          <ProductHook key={product.id} id={product.id} imageId={product.imageId} name={product.name} price={product.price}></ProductHook>
         )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {console.log('ProductList mapStateToProps: ' + JSON.stringify(state)); return {
+const mapStateToProps = state => ({
   products: state.products.items,
   loading: state.products.loading,
   error: state.products.error
-}};
+});
 
 export default connect(mapStateToProps)(ProductsList);

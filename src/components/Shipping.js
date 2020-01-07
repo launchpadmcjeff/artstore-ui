@@ -2,34 +2,40 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Header from './Header';
 import Footer from './Footer';
+import { updateShipping } from '../redux/actions';
+import {  faShippingFast } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export class Shipping extends Component {
+
+    updateShipping = (e) => {
+        console.log(e.target);
+        console.log(e.target.checked);
+        if (e.target.name === 'news-and-offers' || e.target.name === 'save-info') {
+            this.props.updateShipping({[e.target.name]: e.target.checked});
+        } else {
+            this.props.updateShipping({[e.target.name]: e.target.value});
+        }
+
+    }
+
     render() {
         return (
             <div className="Shipping">
                 <Header />
                 <div className="container">
 
-                    <h1>Shipping</h1>
+                    <h1>Shipping <FontAwesomeIcon icon={faShippingFast} /></h1>
                     <div style={{ display: "grid", gridRowGap: "1rem", width: "90%", margin: ".5rem auto" }}>
                         <h3>Contact Information</h3>
-                        {/* <label htmlFor="email">Email</label> */}
-                        <input id="email" name="email" autoComplete="shipping email" type="email" placeholder="Email" aria-label="Email"></input>
-
-                        {/* <label htmlFor="first-name">First Name</label> */}
-                        <input id="first-name" name="first-name" autoComplete="shipping given-name" type="text" placeholder="First Name" aria-label="First Name"></input>
-                        {/* <label htmlFor="last-name">Last Name</label> */}
-                        <input id="last-name" name="last-name" autoComplete="shipping family-name" type="text" placeholder="Last Name" aria-label="Last Name"></input>
-                        {/* <label htmlFor="shipping-organization">Company</label> */}
-                        <input id="shipping-organization" name="shipping-organization" autoComplete="shipping organization" type="text" placeholder="Company (Optional)" aria-label="Company (Optional)"></input>
-                        {/* <label htmlFor="shipping-address-line1">Address</label> */}
-                        <input id="shipping-address-line1" name="shipping-address-line1" autoComplete="shipping address-line1" type="text" placeholder="Address" aria-label="Address"></input>
-                        {/* <label htmlFor="shipping-address-line2">Apt, Suite, etc (Optional)</label> */}
-                        <input id="shipping-address-line2" name="shipping-address-line2" autoComplete="shipping address-line2" type="text" placeholder="Apt, Suite, etc (Optional)" aria-label="Apt, Suite, etc (Optional)"></input>
-                        {/* <label htmlFor="shipping-address-level2">City</label> */}
-                        <input id="shipping-address-level2" name="shipping-address-level2" autoComplete="shipping address-level2" type="text" placeholder="City" aria-label="City"></input>
-                        {/* <label htmlFor="shipping-address-level1">State</label> */}
-                        <select data-name="foo" id="shipping-address-level1" name="shipping-address-level1" autoComplete="shipping address-level1" type="text" placeholder="State" aria-label="State">
+                        <input id="email" name="email" autoComplete="shipping email" type="email" onChange={this.updateShipping} placeholder="Email" aria-label="Email" value={this.props.email}></input>
+                        <input id="given-name" name="given-name" autoComplete="shipping given-name" type="text" onChange={this.updateShipping} placeholder="First Name" aria-label="First Name" value={this.props['given-name']}></input>
+                        <input id="family-name" name="family-name" autoComplete="shipping family-name" type="text" onChange={this.updateShipping} placeholder="Last Name" aria-label="Last Name" value={this.props['family-name']}></input>
+                        <input id="organization" name="organization" autoComplete="shipping organization" type="text" onChange={this.updateShipping} placeholder="Company (Optional)" aria-label="Company (Optional)" value={this.props.organization}></input>
+                        <input id="address-line1" name="address-line1" autoComplete="shipping address-line1" type="text" onChange={this.updateShipping} placeholder="Address" aria-label="Address" value={this.props['address-line1']}></input>
+                        <input id="address-line2" name="address-line2" autoComplete="shipping address-line2" type="text" onChange={this.updateShipping} placeholder="Apt, Suite, etc (Optional)" aria-label="Apt, Suite, etc (Optional)" value={this.props['address-line2']}></input>
+                        <input id="address-level2" name="address-level2" autoComplete="shipping address-level2" type="text" onChange={this.updateShipping} placeholder="City" aria-label="City" value={this.props['address-level2']}></input>
+                        <select data-name="foo" id="address-level1" name="address-level1" autoComplete="shipping address-level1" onChange={this.updateShipping} placeholder="State" aria-label="State"  value={this.props['address-level1']}>
                             <option disabled="">State</option>
                             <option data-description="Alabama" value="AL">Alabama</option>
                             <option data-description="Alaska" value="AK">Alaska</option>
@@ -94,14 +100,12 @@ export class Shipping extends Component {
                             <option data-description="Armed Forces Europe" value="AE">Armed Forces Europe</option>
                             <option data-description="Armed Forces Pacific" value="AP">Armed Forces Pacific</option>
                         </select>
-                        {/* <label htmlFor="postal-code">ZIP Code</label> */}
-                        <input id="postal-code" name="postal-code" autoComplete="shipping postal-code" type="text" placeholder="ZIP Code" aria-label="ZIP Code"></input>
-                        {/* <label htmlFor="tel-national">Phone (Optional)</label> */}
-                        <input id="tel-national" name="tel-national" autoComplete="shipping tel-national" type="text" placeholder="Phone (Optional)" aria-label="Phone (Optional)"></input>
+                        <input id="postal-code" name="postal-code" autoComplete="shipping postal-code" type="text" onChange={this.updateShipping} placeholder="ZIP Code" aria-label="ZIP Code" value={this.props['postal-code']}></input>
+                        <input id="tel-national" name="tel-national" autoComplete="shipping tel-national" type="text" onChange={this.updateShipping} placeholder="Phone (Optional)" aria-label="Phone (Optional)" value={this.props['tel-national']}></input>
 
 
                         <h3>Shipping Method</h3>
-                        <select data-name="foo" id="shipping-address-level1" name="shipping-address-level1" autoComplete="shipping address-level1" type="text" placeholder="Choose Shipping" aria-label="Choose Shipping">
+                        <select data-name="foo" id="shipping-method" name="shipping-method" onChange={this.updateShipping} placeholder="Choose Shipping" aria-label="Choose Shipping" value={this.props['shipping-method']}>
                             <option disabled="">Choose Shipping...</option>
                             <option value="USPS">USPS Priority Mail</option>
                         </select>
@@ -110,13 +114,13 @@ export class Shipping extends Component {
 
                         <label className="tupperware">
                             Keep me up to date on news and exclusive offers
-                            <input type="checkbox" defaultChecked="checked"></input>
+                            <input id="news-and-offers" name="news-and-offers" type="checkbox" onChange={this.updateShipping} checked={this.props['news-and-offers']}></input>
                             <span className="checkmark"></span>
                         </label>
 
                         <label className="tupperware">
                             Save my information for a faster checkout
-                            <input type="checkbox" defaultChecked="checked"></input>
+                            <input id="save-info" name="save-info" type="checkbox" onChange={this.updateShipping}  checked={this.props['save-info']}></input>
                             <span className="checkmark"></span>
                         </label>
                     </div>
@@ -127,11 +131,10 @@ export class Shipping extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-
-})
+const mapStateToProps = (state) => (state.shipping);
 
 const mapDispatchToProps = {
+    updateShipping
 
 }
 

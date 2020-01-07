@@ -19,7 +19,7 @@ const mapStateToProps = (state, dispatch) => {
     console.log('mapStateToProps: ' + JSON.stringify(dispatch));
     console.log(state);
     console.log(dispatch);
-    return { itemCount: state.cart.length };
+    return { itemCount: state.cart.itemCount };
 };
 
 export default connect(
