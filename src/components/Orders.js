@@ -4,9 +4,25 @@ import Header from './Header';
 import Footer from './Footer';
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { getOrders } from "../redux/actions";
 
 export class Orders extends Component {
+    componentDidMount() {
+        this.props.dispatch(getOrders());
+    }
     render() {
+        const { error, loading, orders } = this.props;
+
+        if (error) {
+            return <div>Error! {error.message}</div>;
+        }
+
+        if (loading) {
+            console.log('Orders Loading...');
+            return <div>Loading...</div>;
+        }
+
+        console.log('Orders: ' + orders);
         return (
             <div className="Orders">
                 <Header />
@@ -57,19 +73,13 @@ export class Orders extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+    orders: state.orders.orders,
+    loading: state.orders.loading,
+    error: state.orders.error
 })
 
 const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Orders)
-
-const getOrders = async (e) => {
-    e.preventDefault();
-    this.props.addToCart(this.props.id, this.props.name, this.props.price);
-    const response = await fetch('http://localhost:8080/artstore/rest/orders/99', { headers: { 'Content-Type': 'application/json' } });
-    const myJson = await response.json();
-    console.log(JSON.stringify(myJson));
-}
+export default connect(mapStateToProps)(Orders)

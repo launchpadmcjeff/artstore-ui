@@ -3,11 +3,10 @@ The UI for the Artstore
 
 
 ## TODO
-* cart page should display items in cart; view cart - ui, connect to redux store
+* remove from cart functionality
+* include client idea of date with post order
 * applying discount code should update cart
-* checkout functionality; cart buy now should submit order and update orders page
 * orders page should display actual orders
-* shipping page redux store need initialization for uncontrolled to controlled component warning
 * media query and styling for non-mobile
 * update favicon
 * AWS deployment pipeline
@@ -19,10 +18,13 @@ The UI for the Artstore
 
 
 ## IN PROGRESS
-* shipping info - connect to redux store
+* checkout functionality; cart buy now should submit order and update orders page
 * 
 
 ## DONE
+* shipping page redux store need initialization for uncontrolled to controlled component warning
+* shipping info - connect to redux store
+* cart page should display items in cart; view cart - ui, connect to redux store
 * aria labeling per https://developers.google.com/web/fundamentals/accessibility/semantics-aria/aria-labels-and-relationships
 * payment
 * 

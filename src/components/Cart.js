@@ -23,7 +23,7 @@ class Cart extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.props.lineItems.map(product =>
+                                {this.props.cart.lineItems.map(product =>
                                     <tr key={product.id}>
                                         <td>{product.name}</td>
                                         <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
@@ -31,30 +31,30 @@ class Cart extends Component {
                                 )}
                                 <tr>
                                     <td >Subtotal</td>
-                                    <td>{(this.props.subtotal / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                    <td>{(this.props.cart.subtotal / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                                 <tr>
                                     <td >Tax</td>
-                                    <td>{(this.props.tax / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                    <td>{(this.props.cart.tax / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                                 <tr>
                                     <td >Total</td>
-                                    <td>{(this.props.total / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
+                                    <td>{(this.props.cart.total / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colSpan="2">
-                                        <button onClick={this.getOrders99}>
+                                        <button onClick={this.applyDiscount}>
                                             APPLY
                                         </button>
-                                        <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code" aria-label="Discount Code" onChange={this.updatePayment} value={this.props['discount-code']}></input>
+                                        <input id="discount-code" name="discount-code" type="text" placeholder="Discount Code" aria-label="Discount Code" onChange={this.updatePayment} value={this.props.cart['discount-code']}></input>
                                     </td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
-                    <button onClick={this.getOrders99} style={{ width: '100%', padding: '1rem', bgColor: '#ccc' }}>
+                    <button onClick={this.buyNow} style={{ width: '100%', padding: '1rem', bgColor: '#ccc' }}>
                         <FontAwesomeIcon icon={faCartArrowDown} size="1x" color="#f3cd14" /> BUY NOW
                     </button>
                 </div>
@@ -63,39 +63,62 @@ class Cart extends Component {
         )
     }
 
-    testItem = {
-        "itemCount": "2",
-        "subTotal": "0",
-        "tax": "0",
-        "total": "0",
-        "shippingMethod": "USPS",
-        "subscribeNewsOffers": true,
-        "saveInfo": true,
-        "shippingAddress": {
-
-        },
-        "billingAddress": {
-            "email": "foo@bar.com",
-            "givenName": "",
-            "familyName": "",
-            "organization": "",
-            "addressLine1": "",
-            "addressLine2": "",
-            "addressLevel2": "",
-            "addressLevel1": "",
-            "postalCode": "",
-            "telNational": ""
-        }
+    applyDiscount = async (e) => {
+        e.preventDefault();
+        console.log("apply discount");
 
     }
-    getOrders99 = async (e) => {
+
+    buyNow = async (e) => {
         e.preventDefault();
-        console.log(this.testItem);
-        this.props.dispatch(submitOrder(this.testItem));
+        console.log(this.buildOrder());
+        this.props.dispatch(submitOrder(this.buildOrder()));
+    }
+
+    buildOrder = () => {
+        return {
+            itemCount: this.props.cart.itemCount,
+            products: this.props.cart.lineItems,
+            subTotal: this.props.cart.subtotal,
+            tax: this.props.cart.tax,
+            total: this.props.cart.total,
+            shippingMethod: this.props.shipping['shipping-method'],
+            subscribeNewsOffers: this.props.shipping['news-and-offers'],
+            saveInfo: this.props.shipping['save-info'],
+            shippingAddress: {
+                email: this.props.shipping.email,
+                givenName: this.props.shipping['given-name'],
+                familyName: this.props.shipping['family-name'],
+                organization: this.props.shipping['organization'],
+                addressLine1: this.props.shipping['address-line1'],
+                addressLine2: this.props.shipping['address-line2'],
+                addressLevel2: this.props.shipping['address-level2'],
+                addressLevel1: this.props.shipping['address-level1'],
+                postalCode: this.props.shipping['postal-code'],
+                telNational: this.props.shipping['tel-national']
+            },
+            billingAddress: {
+                email: this.props.payment.email,
+                givenName: this.props.payment['given-name'],
+                familyName: this.props.payment['family-name'],
+                organization: this.props.payment['organization'],
+                addressLine1: this.props.payment['address-line1'],
+                addressLine2: this.props.payment['address-line2'],
+                addressLevel2: this.props.payment['address-level2'],
+                addressLevel1: this.props.payment['address-level1'],
+                postalCode: this.props.payment['postal-code'],
+                telNational: this.props.payment['tel-national']
+            },
+            ccNumber: this.props.payment['cc-number'],
+            ccName: this.props.payment['cc-name'],
+            ccExp: this.props.payment['cc-exp'],
+            ccCsc: this.props.payment['cc-csc'],
+            billingEqualShipping: this.props.payment['billing-eq-shipping']
+        }
     }
 }
 
-const mapStateToProps = (state) => (state.cart)
+const mapStateToProps = (state) => ({cart: state.cart, shipping: state.shipping, payment: state.payment})
 
 const mapDispatchToProps = {
     submitOrder

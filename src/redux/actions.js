@@ -1,6 +1,7 @@
 import {
   ADD_TO_CART, UPDATE_SHIPPING, UPDATE_PAYMENT, FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE,
-  SUBMIT_ORDER_BEGIN, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_FAILURE
+  SUBMIT_ORDER_BEGIN, SUBMIT_ORDER_SUCCESS, SUBMIT_ORDER_FAILURE,
+  GET_ORDERS_BEGIN, GET_ORDERS_SUCCESS, GET_ORDERS_FAILURE
 } from "./actionTypes";
 
 export const addToCart = (id, name, price) => ({
@@ -93,8 +94,42 @@ export function submitOrder(data) {
 
 // Handle HTTP errors since fetch won't.
 function handleErrors(response) {
-  if (!response.ok) {
-    throw Error(response.statusText);
+  switch (response.status) {
+    case 400:
+    case 500:
+      throw Error(response.statusText);
+    default:
+      return response;
   }
-  return response;
+}
+
+
+export const getOrdersBegin = () => ({
+  type: GET_ORDERS_BEGIN
+});
+
+export const getOrdersSuccess = orders => ({
+  type: GET_ORDERS_SUCCESS,
+  payload: orders
+});
+
+export const getOrdersFailure = error => ({
+  type: GET_ORDERS_FAILURE,
+  payload: { error }
+});
+
+export function getOrders() {
+  return dispatch => {
+    dispatch(getOrdersBegin());
+    return fetch('http://localhost:8080/artstore/rest/orders', { headers: { 'Content-Type': 'application/json' } })
+      .then(handleErrors)
+      .then(res => res.json())
+      .then(json => {
+        console.log('******  getOrders  ******');
+        console.log(json);
+        dispatch(getOrdersSuccess(json));
+        return json;
+      })
+      .catch(error => dispatch(getOrdersFailure(error)));
+  };
 }
