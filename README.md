@@ -31,11 +31,11 @@ The UI for the Artstore
 
 
 
-_         _
- \_(`}`)_/
+    _         _
+     \_(`}`)_/
 
 
 ## References
-https://www.w3.org/TR/WCAG21/#input-purposes
-https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute
-https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+* https://www.w3.org/TR/WCAG21/#input-purposes
+* https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute
+* https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
