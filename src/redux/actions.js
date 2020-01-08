@@ -60,9 +60,8 @@ export const submitOrderBegin = () => ({
   type: SUBMIT_ORDER_BEGIN
 });
 
-export const submitOrderSuccess = order => ({
+export const submitOrderSuccess = () => ({
   type: SUBMIT_ORDER_SUCCESS,
-  payload: order
 });
 
 export const submitOrderFailure = error => ({
@@ -73,8 +72,6 @@ export const submitOrderFailure = error => ({
 export function submitOrder(data) {
   return dispatch => {
     dispatch(submitOrderBegin());
-    console.log(JSON.stringify(data));
-    // const data = {};
     return fetch('http://localhost:8080/artstore/rest/orders', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
@@ -89,11 +86,9 @@ export function submitOrder(data) {
       body: JSON.stringify(data)
     })
       .then(handleErrors)
-      .then(res => res.json())
-      .then(json => {
-        dispatch(submitOrderSuccess(json));
-        return json;
-      })
+      .then(
+        dispatch(submitOrderSuccess())
+      )
       .catch(error => dispatch(submitOrderFailure(error)));
   };
 }

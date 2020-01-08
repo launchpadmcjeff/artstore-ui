@@ -10,7 +10,7 @@ import {
     error: null
   };
   
-  export default function productReducer(state = initialState, action) {
+  export default function ordersReducer(state = initialState, action) {
     switch (action.type) {
       case GET_ORDERS_BEGIN:
         // Mark the state as "loading" so we can show a spinner or something
