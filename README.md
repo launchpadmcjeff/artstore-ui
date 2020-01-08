@@ -3,25 +3,38 @@ The UI for the Artstore
 
 
 ## TODO
-* remove from cart functionality
+* zero orders page placeholder
+* check cart for missing info feature
 * include client idea of date with post order
+* orders page should show status from server
+* async rest communicator service
 * applying discount code should update cart
-* orders page should display actual orders
 * media query and styling for non-mobile
 * update favicon
 * AWS deployment pipeline
 * tests
+* test add 5 items, complete shipping, complete payment, checkout now
+* test add 5 items, complete shipping, complete payment, delete 2 items, add 6 items, checkout now
+* test add 5 identical items, complete shipping, complete payment, delete 2 items, checkout now
 * chat feature
 * enable PWA features
 * filter and search catalog feature
 * implement store persistence to localstorage: https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
+*
 
 
 ## IN PROGRESS
-* checkout functionality; cart buy now should submit order and update orders page
 * 
 
+
 ## DONE
+* Fix delete from cart bug
+* orders page table has wrong text-align styling
+* fix SUBMIT_ORDER_FAILURE event dispatch incorrectly
+* clear cart after purchase
+* remove from cart functionality
+* orders page should display actual orders
+* checkout functionality; cart buy now should submit order and update orders page
 * shipping page redux store need initialization for uncontrolled to controlled component warning
 * shipping info - connect to redux store
 * cart page should display items in cart; view cart - ui, connect to redux store

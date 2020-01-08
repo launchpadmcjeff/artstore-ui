@@ -9,19 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export class Payment extends Component {
 
     updatePayment = (e) => {
-        console.log(e.target);
-        console.log(e.target.checked);
         if (e.target.name === 'billing-eq-shipping') {
             this.props.updatePayment({'billing-eq-shipping': e.target.value});
         } else {
             this.props.updatePayment({[e.target.name]: e.target.value});
         }
-
     }
 
     updateBilling = (e) => {
-        console.log(e.target);
-        console.log(e.target.checked);
         if (e.target.name === 'billing-eq-shipping') {
             this.props.updatePayment({'billing-eq-shipping': e.target.value});
         } else {
@@ -34,10 +29,8 @@ export class Payment extends Component {
             <div className="Payment">
                 <Header />
                 <div className="container">
-
                     <h1>Payment <FontAwesomeIcon icon={faFileInvoiceDollar} /></h1>
                     <div style={{ display: "grid", gridRowGap: "1rem", width: "90%", margin: ".5rem auto" }}>
-
                         All transactions are secure and encrypted
                         <input id="cc-number" name="cc-number" autoComplete="cc-number" type="text" placeholder="Card Number" aria-label="Card Number" onChange={this.updatePayment} value={this.props['cc-number']}></input>
                         <input id="cc-name" name="cc-name" autoComplete="cc-name" type="text" placeholder="Name on Card" aria-label="Name on Card" onChange={this.updatePayment} value={this.props['cc-name']}></input>

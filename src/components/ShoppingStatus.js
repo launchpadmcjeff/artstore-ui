@@ -8,17 +8,13 @@ class ShoppingStatus extends Component {
         return (
             <div className="Shopping-status">
                 <span>{this.props.itemCount}</span>
-                <FontAwesomeIcon icon={faShoppingCart} className="p-1" color="#fff" />
+                <FontAwesomeIcon icon={faShoppingCart} color="#fff" />
             </div>
         )
     }
 }
 
-const mapStateToProps = (state, dispatch) => {
-    console.log('mapStateToProps: ' + JSON.stringify(state));
-    console.log('mapStateToProps: ' + JSON.stringify(dispatch));
-    console.log(state);
-    console.log(dispatch);
+const mapStateToProps = (state) => {
     return { itemCount: state.cart.itemCount };
 };
 

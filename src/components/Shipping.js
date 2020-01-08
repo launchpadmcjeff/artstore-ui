@@ -9,14 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export class Shipping extends Component {
 
     updateShipping = (e) => {
-        console.log(e.target);
-        console.log(e.target.checked);
         if (e.target.name === 'news-and-offers' || e.target.name === 'save-info') {
             this.props.updateShipping({[e.target.name]: e.target.checked});
         } else {
             this.props.updateShipping({[e.target.name]: e.target.value});
         }
-
     }
 
     render() {
