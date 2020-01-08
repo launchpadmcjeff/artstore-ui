@@ -23,9 +23,9 @@ class Cart extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.props.cart.lineItems.map(product =>
-                                    <tr key={product.id}>
-                                        <td><button onClick={(e) => this.removeFromCart(product.id, e)} className="cart-remove">&times;</button></td>
+                                {this.props.cart.lineItems.map((product, index) =>
+                                    <tr key={index}>
+                                        <td><button onClick={(e) => this.removeFromCart(index, e)} className="cart-remove">&times;</button></td>
                                         <td>{product.name}</td>
                                         <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                     </tr>
@@ -64,9 +64,9 @@ class Cart extends Component {
         )
     }
 
-    removeFromCart = (id, e) => {
+    removeFromCart = (index, e) => {
         e.preventDefault();
-        this.props.dispatch(removeFromCart(id));
+        this.props.dispatch(removeFromCart(index));
 
     }
 

@@ -3,6 +3,7 @@ The UI for the Artstore
 
 
 ## TODO
+* orders page table has wrong text-align styling
 * zero orders page placeholder
 * check cart for missing info feature
 * include client idea of date with post order
@@ -13,6 +14,9 @@ The UI for the Artstore
 * update favicon
 * AWS deployment pipeline
 * tests
+* test add 5 items, complete shipping, complete payment, checkout now
+* test add 5 items, complete shipping, complete payment, delete 2 items, add 6 items, checkout now
+* test add 5 identical items, complete shipping, complete payment, delete 2 items, checkout now
 * chat feature
 * enable PWA features
 * filter and search catalog feature
@@ -20,7 +24,7 @@ The UI for the Artstore
 
 
 ## IN PROGRESS
-* 
+* Fix delete from cart bug
 
 ## DONE
 * fix SUBMIT_ORDER_FAILURE event dispatch incorrectly

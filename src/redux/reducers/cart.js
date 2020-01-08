@@ -42,14 +42,13 @@ const cart = (state = initialState, action) => {
         loading: false
       };
 
-
     case REMOVE_FROM_CART: {
       const { id } = action.payload;
-      const lineItems = state.lineItems.filter(i => i.id !== id);
+      const lineItems = state.lineItems.filter((i, index) => index !== id);
       const retSumz = retSums(lineItems);
       return Object.assign({}, state, { itemCount: lineItems.length }, retSumz, { lineItems: lineItems });
-      ;
     }
+
     case ADD_TO_CART: {
       const { id, name, price } = action.payload;
 
@@ -64,6 +63,7 @@ const cart = (state = initialState, action) => {
 
       return Object.assign({}, state, { itemCount: lineItems.length }, retSumz, { lineItems });
     }
+
     default: {
       return state;
     }

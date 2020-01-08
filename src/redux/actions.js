@@ -98,8 +98,6 @@ function handleErrors(response) {
   switch (response.status) {
     case 400:
     case 500:
-      console.log('handleErrors');
-      console.log(response);
       throw Error(response.statusText);
     default:
       return response;
@@ -128,8 +126,6 @@ export function getOrders() {
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log('******  getOrders  ******');
-        console.log(json);
         dispatch(getOrdersSuccess(json));
         return json;
       })
