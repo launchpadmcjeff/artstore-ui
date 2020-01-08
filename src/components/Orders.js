@@ -18,19 +18,15 @@ export class Orders extends Component {
         }
 
         if (loading) {
-            console.log('Orders Loading...');
             return <div>Loading...</div>;
         }
 
-        console.log('Orders: ' + orders);
         return (
             <div className="Orders">
                 <Header />
                 <div className="container">
-
                     <h1>Orders <FontAwesomeIcon icon={faImages} /></h1>
                     <div style={{ "overflowX:": "auto" }}>
-
                         <table>
                             <thead>
 
@@ -42,7 +38,7 @@ export class Orders extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.props.orders.map(order =>
+                                {orders.map(order =>
                                     <tr key={order.id}>
                                         <td>{order.id}</td>
                                         <td>{order.shippingMethod}</td>
@@ -53,8 +49,6 @@ export class Orders extends Component {
                             </tbody>
                         </table>
                     </div>
-
-
                 </div>
                 <Footer />
             </div>

@@ -15,10 +15,8 @@ class App extends React.Component {
         </div>
         <Footer />
       </div>
-
     );
   }
-
 }
 
 export default App;

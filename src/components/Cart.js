@@ -72,8 +72,7 @@ class Cart extends Component {
 
     applyDiscount = async (e) => {
         e.preventDefault();
-        console.log("apply discount");
-
+        console.log("apply discount under development");
     }
 
     buyNow = async (e) => {
@@ -125,6 +124,6 @@ class Cart extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({cart: state.cart, shipping: state.shipping, payment: state.payment})
+const mapStateToProps = (state) => ({ cart: state.cart, shipping: state.shipping, payment: state.payment })
 
 export default connect(mapStateToProps)(Cart)

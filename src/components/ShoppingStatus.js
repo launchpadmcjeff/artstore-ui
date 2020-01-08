@@ -8,7 +8,7 @@ class ShoppingStatus extends Component {
         return (
             <div className="Shopping-status">
                 <span>{this.props.itemCount}</span>
-                <FontAwesomeIcon icon={faShoppingCart} className="p-1" color="#fff" />
+                <FontAwesomeIcon icon={faShoppingCart} color="#fff" />
             </div>
         )
     }
