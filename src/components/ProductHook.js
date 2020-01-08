@@ -17,7 +17,7 @@ class ProductHook extends React.Component {
         <h3>
           {(this.props.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}
         </h3>
-        <button onClick={this.addToCart}>
+        <button onClick={this.addToCart} aria-label="Add to Cart">
           <FontAwesomeIcon icon={faCartPlus} size="2x" color="#f3cd14" />
         </button>
       </div>
