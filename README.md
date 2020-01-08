@@ -4,6 +4,7 @@ The UI for the Artstore
 
 ## TODO
 * remove from cart functionality
+* zero orders page placeholder
 * include client idea of date with post order
 * applying discount code should update cart
 * orders page should display actual orders
