@@ -4,11 +4,6 @@ import Header from './Header'
 import { Footer } from './Footer';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('App constructor');
-  }
-
 
   render() {
 

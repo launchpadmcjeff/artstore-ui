@@ -17,11 +17,9 @@ class ProductsList extends React.Component {
     }
 
     if (loading) {
-      console.log('ProductsList Loading...');
       return <div>Loading...</div>;
     }
 
-    console.log('ProductsList: ' + products);
     return (
       <div className="Products-list">
         {products.map(product =>
