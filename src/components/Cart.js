@@ -5,7 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { faShoppingCart, faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { submitOrder } from '../redux/actions'
+import { submitOrder, removeFromCart } from '../redux/actions'
 
 class Cart extends Component {
     render() {
@@ -18,33 +18,34 @@ class Cart extends Component {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th colSpan="2">Name</th>
                                     <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.props.cart.lineItems.map(product =>
                                     <tr key={product.id}>
+                                        <td><button onClick={(e) => this.removeFromCart(product.id, e)} className="cart-remove">&times;</button></td>
                                         <td>{product.name}</td>
                                         <td>{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                     </tr>
                                 )}
                                 <tr>
-                                    <td >Subtotal</td>
+                                    <td colSpan="2">Subtotal</td>
                                     <td>{(this.props.cart.subtotal / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                                 <tr>
-                                    <td >Tax</td>
+                                    <td colSpan="2">Tax</td>
                                     <td>{(this.props.cart.tax / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                                 <tr>
-                                    <td >Total</td>
+                                    <td colSpan="2">Total</td>
                                     <td>{(this.props.cart.total / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colSpan="2">
+                                    <td colSpan="3">
                                         <button onClick={this.applyDiscount}>
                                             APPLY
                                         </button>
@@ -61,6 +62,12 @@ class Cart extends Component {
                 <Footer />
             </div>
         )
+    }
+
+    removeFromCart = (id, e) => {
+        e.preventDefault();
+        this.props.dispatch(removeFromCart(id));
+
     }
 
     applyDiscount = async (e) => {

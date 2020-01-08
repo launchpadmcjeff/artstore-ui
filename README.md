@@ -3,7 +3,6 @@ The UI for the Artstore
 
 
 ## TODO
-* remove from cart functionality
 * zero orders page placeholder
 * include client idea of date with post order
 * applying discount code should update cart
@@ -19,10 +18,11 @@ The UI for the Artstore
 
 
 ## IN PROGRESS
-* checkout functionality; cart buy now should submit order and update orders page
+* remove from cart functionality
 * 
 
 ## DONE
+* checkout functionality; cart buy now should submit order and update orders page
 * shipping page redux store need initialization for uncontrolled to controlled component warning
 * shipping info - connect to redux store
 * cart page should display items in cart; view cart - ui, connect to redux store
