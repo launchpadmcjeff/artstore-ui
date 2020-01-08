@@ -3,7 +3,6 @@ The UI for the Artstore
 
 
 ## TODO
-* orders page table has wrong text-align styling
 * zero orders page placeholder
 * check cart for missing info feature
 * include client idea of date with post order
@@ -21,12 +20,16 @@ The UI for the Artstore
 * enable PWA features
 * filter and search catalog feature
 * implement store persistence to localstorage: https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
+*
 
 
 ## IN PROGRESS
-* Fix delete from cart bug
+* 
+
 
 ## DONE
+* Fix delete from cart bug
+* orders page table has wrong text-align styling
 * fix SUBMIT_ORDER_FAILURE event dispatch incorrectly
 * clear cart after purchase
 * remove from cart functionality

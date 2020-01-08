@@ -10,7 +10,7 @@ table {
 }
 td, th {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: .5rem;
 }
 
 .Cart button.cart-remove {
@@ -26,10 +26,24 @@ td, th {
 td:nth-last-child(1), td:nth-last-child(2) {
   text-align: right;
 } */
-th:nth-last-child(1), td:nth-last-child(1) {
+.Cart th:nth-last-child(1), .Cart td:nth-last-child(1) {
   text-align: right;
 }
-tr:nth-last-child(3), tr:nth-last-child(2), tr:nth-last-child(1) {
+.Cart tr:nth-last-child(3), .Cart tr:nth-last-child(2), .Cart tr:nth-last-child(1) {
+  text-align: right;
+}
+
+.Orders th:nth-last-child(1), .Orders th:nth-last-child(3),
+.Orders td:nth-last-child(1), .Orders td:nth-last-child(3) {
+  text-align: center;
+}
+
+.Orders th:nth-child(1),
+.Orders td:nth-child(1) {
+  text-align: center;
+}
+.Orders th:nth-last-child(2),
+.Orders td:nth-last-child(2) {
   text-align: right;
 }
 
@@ -38,8 +52,8 @@ tr:nth-child(even){background-color: #f2f2f2;}
 tr:hover {background-color: #ddd;}
 
 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
   text-align: left;
   background-color: gold;
   color: #333;
