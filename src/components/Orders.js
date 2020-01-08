@@ -78,8 +78,4 @@ const mapStateToProps = (state) => ({
     error: state.orders.error
 })
 
-const mapDispatchToProps = {
-
-}
-
 export default connect(mapStateToProps)(Orders)

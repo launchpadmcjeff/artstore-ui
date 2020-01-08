@@ -120,10 +120,4 @@ class Cart extends Component {
 
 const mapStateToProps = (state) => ({cart: state.cart, shipping: state.shipping, payment: state.payment})
 
-const mapDispatchToProps = {
-    submitOrder
-
-}
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Cart)
 export default connect(mapStateToProps)(Cart)

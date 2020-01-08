@@ -97,6 +97,8 @@ function handleErrors(response) {
   switch (response.status) {
     case 400:
     case 500:
+      console.log('handleErrors');
+      console.log(response);
       throw Error(response.statusText);
     default:
       return response;
