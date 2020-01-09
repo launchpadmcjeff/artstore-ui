@@ -9,9 +9,10 @@ The UI for the Artstore
 * orders page should show status from server
 * async rest communicator service
 * applying discount code should update cart
+* save my info checkbox should persist to localstorage
+* implement store persistence to localstorage: https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
 * media query and styling for non-mobile
 * update favicon
-* AWS deployment pipeline
 * tests
 * test add 5 items, complete shipping, complete payment, checkout now
 * test add 5 items, complete shipping, complete payment, delete 2 items, add 6 items, checkout now
@@ -19,11 +20,11 @@ The UI for the Artstore
 * chat feature
 * enable PWA features
 * filter and search catalog feature
-* implement store persistence to localstorage: https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
-*
+* cart buy now should invoke an animated thank-you transition to empty cart buy more cta
 
 
 ## IN PROGRESS
+* AWS deployment pipeline
 * 
 
 
