@@ -1,0 +1,191 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple continuous delivery of a SPA to S3
+Parameters:
+  SpaName:
+    Type: String
+    Description: The name of the SPA deployment
+  SpaHostName:
+    Type: String
+    Description: The hostname component of the URL
+  SpaDomainName:
+    Type: String
+    Description: The domain component of the URL
+  HostedZoneId:
+    Type: String
+    Default: Z1Q1ZYNVRFUCE
+    Description: The Route53 domain HostedZoneId
+  AcmCertificateArn:
+    Type: String
+    Description: AWS Certificate Manager SSL Cert Arn
+    Default: arn:aws:acm:us-east-1:737930803050:certificate/ea5e1a39-3316-48a7-9ea5-17f3457938fe
+    AllowedPattern: "arn:aws:acm:.*"
+  SiteBucketName:
+    Type: String
+    Description: The website hosting bucket
+  SiteUploadBucketName:
+    Type: String
+    Description: The website upload bucket
+  SiteLogsBucketName:
+    Type: String
+    Description: The website logs bucket
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "Site Configuration"
+        Parameters:
+          - SpaName
+          - SpaHostName
+          - SpaDomainName
+          - SiteBucketName
+          - SiteUploadBucketName
+          - SiteLogsBucketName
+      - Label:
+          default: "DNS/SSL Configuration"
+        Parameters:
+          - AcmCertificateArn
+          - HostedZoneId
+    ParameterLabels:
+      SpaName:
+        default: spa
+      SpaHostName:
+        default: hostname
+      SpaDomainName:
+        default: domain
+      SiteBucketName:
+        default: Site Bucket
+      SiteUploadBucketName:
+        default: Upload Bucket
+      SiteLogsBucketName:
+        default: Logs Bucket
+      AcmCertificateArn:
+        default: SSL Cert ARN
+      HostedZoneId:
+        default: HostedZoneId
+Resources:
+  SiteBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub ${SiteBucketName}
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+  SiteUploadBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub ${SiteUploadBucketName}
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - '*'
+            AllowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            AllowedOrigins:
+              - '*'
+  SiteLogsBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Sub ${SiteLogsBucketName}
+
+  SiteDistro:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !Sub ${SpaHostName}.${SpaDomainName}
+        Comment: !Sub ${SpaName} CF dist
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+          CachedMethods:
+            - GET
+            - HEAD
+          Compress: true
+          DefaultTTL: 86400
+          ForwardedValues:
+            QueryString: false
+          MaxTTL: 31536000
+          MinTTL: 0
+          SmoothStreaming: false
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
+        Enabled: true
+        HttpVersion: http2
+        IPV6Enabled: true
+        Origins:
+          - Id: S3Origin
+            DomainName: !Sub ${SiteBucketName}.s3.amazonaws.com
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+        PriceClass: PriceClass_100
+        ViewerCertificate:
+          AcmCertificateArn: !Ref AcmCertificateArn
+          SslSupportMethod: sni-only
+      Tags:
+        - Key: SpaName
+          Value: !Ref SpaName
+
+  DnsEntry:
+    Type: "AWS::Route53::RecordSet"
+    Properties: 
+      Comment: !Sub ${SpaName} DNS entry
+      HostedZoneId: !Ref HostedZoneId
+      Name: !Sub ${SpaHostName}.${SpaDomainName}.
+      ResourceRecords:
+        - !GetAtt  SiteDistro.DomainName
+      TTL: 300
+      Type: CNAME
+
+  UserPool:
+    Type: "AWS::Cognito::UserPool"
+    Properties:
+      UserPoolName: !Sub ${SpaName}
+      AutoVerifiedAttributes:
+        - email
+      Schema:
+      - Name: email
+        Required: true
+
+  UserPoolClient:
+    Type: "AWS::Cognito::UserPoolClient"
+    Properties:
+        ClientName: !Sub ${SpaName}-App
+        GenerateSecret: false
+        RefreshTokenValidity: 30
+        UserPoolId: !Ref UserPool
+
+Outputs:
+  SiteBucketName:
+    Value: !Ref SiteBucket
+    Description: S3 Website Bucket Name
+  SiteUploadBucketName:
+    Value: !Ref SiteUploadBucket
+    Description: S3 Upload Bucket Name
+  SiteLogsBucketName:
+    Value: !Ref SiteLogsBucket
+    Description: S3 Logs Bucket Name
+  S3WwwUrl:
+    Value: !GetAtt [SiteBucket, WebsiteURL]
+    Description: S3 Website URL
+  S3SiteUrl:
+    Value: !Sub https://${SiteBucket}.s3.${AWS::Region}.amazonaws.com/index.html
+    Description: S3 Bucket URL
+  S3UploadUrl:
+    Value: !GetAtt [SiteUploadBucket, WebsiteURL]
+    Description: S3 Upload URL
+  DistroUrl:
+    Value: !Join ['', ['https://', !GetAtt SiteDistro.DomainName] ]
+    Description: Cloudfront Website URL
+  WwwSiteUrl:
+    Value: !Join ['', ['https://', !Ref SpaHostName, '.', !Ref SpaDomainName]]
+    Description: Public Website URL
+
