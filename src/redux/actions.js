@@ -46,7 +46,7 @@ export const fetchProductsFailure = error => ({
 export function fetchProducts() {
   return dispatch => {
     dispatch(fetchProductsBegin());
-    return fetch('http://localhost:8080/artstore/rest/products', { headers: { 'Content-Type': 'application/json' } })
+    return fetch('https://api.robowe.be/artstore/rest/products', { headers: { 'Content-Type': 'application/json' } })
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
@@ -72,7 +72,9 @@ export const submitOrderFailure = error => ({
 export function submitOrder(data) {
   return dispatch => {
     dispatch(submitOrderBegin());
-    return fetch('http://localhost:8080/artstore/rest/orders', {
+    console.log(JSON.stringify(data));
+    // const data = {};
+    return fetch('https://api.robowe.be/artstore/rest/orders', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -122,7 +124,7 @@ export const getOrdersFailure = error => ({
 export function getOrders() {
   return dispatch => {
     dispatch(getOrdersBegin());
-    return fetch('http://localhost:8080/artstore/rest/orders', { headers: { 'Content-Type': 'application/json' } })
+    return fetch('https://api.robowe.be/artstore/rest/orders', { headers: { 'Content-Type': 'application/json' } })
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {

@@ -10,7 +10,7 @@ class ProductHook extends React.Component {
   render() {
     return (
       <div className="Product-hook">
-        <img src={'http://localhost:8080/artstore/img/' + this.props.imageId + '.jpg'} alt={this.props.name} />
+        <img src={'https://api.robowe.be/artstore/img/' + this.props.imageId + '.jpg'} alt={this.props.name} />
         <h2>
           {this.props.name}
         </h2>

@@ -145,24 +145,6 @@ Resources:
       TTL: 300
       Type: CNAME
 
-  UserPool:
-    Type: "AWS::Cognito::UserPool"
-    Properties:
-      UserPoolName: !Sub ${SpaName}
-      AutoVerifiedAttributes:
-        - email
-      Schema:
-      - Name: email
-        Required: true
-
-  UserPoolClient:
-    Type: "AWS::Cognito::UserPoolClient"
-    Properties:
-        ClientName: !Sub ${SpaName}-App
-        GenerateSecret: false
-        RefreshTokenValidity: 30
-        UserPoolId: !Ref UserPool
-
 Outputs:
   SiteBucketName:
     Value: !Ref SiteBucket
